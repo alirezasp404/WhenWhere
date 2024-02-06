@@ -3,13 +3,14 @@
     x:Class="WhenWhere.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:WhenWhere.Pages"
     xmlns:local="clr-namespace:WhenWhere"
     Shell.FlyoutBehavior="Disabled"
     Title="WhenWhere">
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        ContentTemplate="{DataTemplate pages:Home}"
+        Route="Home" />
 
 </Shell>
