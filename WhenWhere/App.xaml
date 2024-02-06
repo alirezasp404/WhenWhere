@@ -11,7 +11,7 @@
             </ResourceDictionary.MergedDictionaries>
             <Color x:Key="MainBackgroundColor">#1d4ed8</Color>
             <Color x:Key="MainTextColor">White</Color>
-            <x:Double x:Key="MainFontSize" >20</x:Double>
+            <x:Double x:Key="MainFontSize" >15</x:Double>
             <Style x:Key="Buttons" TargetType="Button">
                 <Setter Property="FontSize" Value="{DynamicResource MainFontSize}" />
                 <Setter Property="TextColor" Value="{DynamicResource MainTextColor}" />
@@ -28,6 +28,7 @@
             <Style x:Key="Labels" TargetType="Label">
                 <Setter Property="FontSize" Value="{DynamicResource MainFontSize}"  ></Setter>
                 <Setter Property="TextColor" Value="{DynamicResource MainTextColor}"  ></Setter>
+                <Setter Property="LineBreakMode" Value="WordWrap"  ></Setter>
             </Style>
         </ResourceDictionary>
     </Application.Resources>
