@@ -1,85 +1,45 @@
 using System.Collections.ObjectModel;
+
+using System.Text.Json;
 using WhenWhere.Models;
+using Windows.UI.Core;
 
 namespace WhenWhere.Pages;
 
 public partial class Home : ContentPage
 {
-	public ObservableCollection<EventModel> Events { get; set; }=new ObservableCollection<EventModel>();
-	public Home()
-	{
-        Preferences.Get("UserID", null);
+    private readonly HttpClient _client = new HttpClient();
+    public ObservableCollection<EventModel> Events { get; set; } = new ObservableCollection<EventModel>();
+    public Home()
+    {
         InitializeComponent();
         BindingContext = this;
-		var event1=new EventModel()
-		{
-			Title="eve1",
-			Description= "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.",
-			Id=1,
-			Location="wwoegjowjeg",
-			DateTime=DateTime.Now,
-			Capacity=10,
-			Creator="owegjo"
-		};
-        var event2 = new EventModel()
+    }
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        var userId = Preferences.Get("UserID", null);
+        if (userId == null)
+            await Shell.Current.GoToAsync("Landing");
+        var getEvents = await _client.GetStringAsync("http://127.0.0.1:8000/event_list/");
+        var events = JsonSerializer.Deserialize<List<EventModel>>(getEvents);
+        foreach (var eventModel in events)
         {
-            Title = "eve2",
-            Description = "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.",
-            Id = 1,
-            Location = "wwoegjowjeg",
-            DateTime = DateTime.Now,
-            Capacity = 10,
-            Creator = "owegjo"
-        };
-        var event3 = new EventModel()
-        {
-            Title = "eve3",
-            Description = "owjgojw",
-            Id = 1,
-            Location = "wwoegjowjeg",
-            DateTime = DateTime.Now,
-            Capacity = 10,
-            Creator = "owegjo"
-        }; var event4 = new EventModel()
-        {
-            Title = "eve1",
-            Description = "owjgojw",
-            Id = 1,
-            Location = "wwoegjowjeg",
-            DateTime = DateTime.Now,
-            Capacity = 10,
-            Creator = "owegjo"
-        };
-        var event5 = new EventModel()
-        {
-            Title = "eve2",
-            Description = "owjgojw",
-            Id = 1,
-            Location = "wwoegjowjeg",
-            DateTime = DateTime.Now,
-            Capacity = 10,
-            Creator = "owegjo"
-        };
-        var event6 = new EventModel()
-        {
-            Title = "eve3",
-            Description = "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.",
-            Id = 1,
-            Location = "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.",
-            DateTime = DateTime.Now,
-            Capacity = 10,
-            Creator = "owegjo"
-        };
-        Events.Add(event1); 
-        Events.Add(event2);
-        Events.Add(event3);
-        Events.Add(event4);
-        Events.Add(event5);
-        Events.Add(event6);
+            Events.Add(eventModel);
+        }
+
         
     }
 
+
+
     private void RegisterButton_Clicked(object sender, EventArgs e)
+    {
+        var eventModel = (EventModel)((Button)sender).BindingContext;
+
+    }
+
+    private void CreateEventButton_Clicked(object sender, EventArgs e)
     {
 
     }

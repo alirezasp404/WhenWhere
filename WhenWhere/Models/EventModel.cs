@@ -3,18 +3,18 @@ namespace WhenWhere.Models
 {
     public class EventModel
     {
-        public int Id { get; set; }
+        public int? id { get; set; }
 
-        public string? Title { get; set; }
+        public string? title { get; set; }
 
-        public string? Description { get; set; }
+        public string? description { get; set; }
 
-        public DateTime DateTime { get; set; }
+        public DateTime? expired_at { get; set; }
 
-        public int Capacity {  get; set; }
+        public int? capacity {  get; set; }
 
-        public string? Location {  get; set; }
+        public string? location {  get; set; }
 
-        public string? Creator {  get; set; }
+        public string? event_maker {  get; set; }
     }
 }
