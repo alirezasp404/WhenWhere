@@ -10,11 +10,13 @@
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Color x:Key="MainBackgroundColor">#1d4ed8</Color>
-            <Color x:Key="MainTextColor">White</Color>
+            <Color x:Key="MainDarkTextColor">White</Color>
+            <Color x:Key="MainLightTextColor">black</Color>
+
             <x:Double x:Key="MainFontSize" >15</x:Double>
             <Style x:Key="Buttons" TargetType="Button">
                 <Setter Property="FontSize" Value="{DynamicResource MainFontSize}" />
-                <Setter Property="TextColor" Value="{DynamicResource MainTextColor}" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Dark={DynamicResource MainDarkTextColor},Light={DynamicResource MainLightTextColor}}" />
                 <Setter Property="BackgroundColor" Value="{DynamicResource MainBackgroundColor}" />
                 <Setter Property="BorderWidth" Value="0" />
             </Style>
@@ -27,7 +29,7 @@
             </Style>
             <Style x:Key="Labels" TargetType="Label">
                 <Setter Property="FontSize" Value="{DynamicResource MainFontSize}"  ></Setter>
-                <Setter Property="TextColor" Value="{DynamicResource MainTextColor}"  ></Setter>
+                <Setter Property="TextColor" Value="{AppThemeBinding Dark={DynamicResource MainDarkTextColor},Light={DynamicResource MainLightTextColor}}" />
                 <Setter Property="LineBreakMode" Value="WordWrap"  ></Setter>
             </Style>
         </ResourceDictionary>

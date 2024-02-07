@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WhenWhere.Pages.Home"
-             Title="Home" >
-    <VerticalStackLayout Spacing="20" >
+             x:Class="WhenWhere.Pages.Events"
+             Title="Events" >
+    <VerticalStackLayout Padding="5" >
         <ImageButton Style="{DynamicResource Logo}"></ImageButton>
-        <Grid Padding="10" ColumnDefinitions="auto,*,auto">
-            <Label VerticalOptions="Center" FontSize="20" FontAttributes="Bold" Text="Events"  Style="{DynamicResource Labels}" Grid.Column="0"></Label>
-            <Button Style="{DynamicResource Buttons}" Clicked="CreateEventButton_Clicked" Text="Create Event" Grid.Column="2" ></Button>
-        </Grid>
-        <ScrollView>
-            <CollectionView  HeightRequest="550" HorizontalOptions="Center"
-            ItemsSource="{Binding Events}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
+        <Button Margin="0,0,10,0" HorizontalOptions="End" Style="{DynamicResource Buttons}" Clicked="CreateEventButton_Clicked" Text="Create Event"  ></Button>
+        <CollectionView EmptyView="No Events to display" HeightRequest="550"
+            ItemsSource="{Binding AllEvents}" ItemsUpdatingScrollMode="KeepItemsInView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
                         <Frame CornerRadius="20" BorderColor="{DynamicResource MainBackgroundColor}" Margin="10" Background="Transparent">
                             <Grid RowSpacing="10" RowDefinitions="auto,auto" ColumnDefinitions="auto,*,auto"    >
                                 <Image Grid.Row="0"  Grid.Column="0" Grid.RowSpan="2" Source="dotnet_bot.png" WidthRequest="150"></Image>
                                 <VerticalStackLayout Spacing="5" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="1" >
                                     <Label Text="{Binding title}" FontAttributes="Bold"  Style="{DynamicResource Labels}" />
                                     <Grid ColumnDefinitions="auto,*" >
-                                        <Image Grid.Column="0"  WidthRequest="20" Source="date.png"></Image>
+                                        <Image Grid.Column="0"  WidthRequest="20" Source="time.gif"></Image>
                                         <Label Grid.Column="1" Text="{Binding expired_at}"  FontSize="12"  Style="{DynamicResource Labels}" />
                                     </Grid>
                                     <Grid ColumnDefinitions="auto,*">
@@ -34,6 +30,6 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        </ScrollView>
+      
     </VerticalStackLayout>
 </ContentPage>

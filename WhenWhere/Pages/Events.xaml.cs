@@ -1,16 +1,16 @@
+
 using System.Collections.ObjectModel;
 
 using System.Text.Json;
 using WhenWhere.Models;
-using Windows.UI.Core;
 
 namespace WhenWhere.Pages;
 
-public partial class Home : ContentPage
+public partial class Events : ContentPage
 {
     private readonly HttpClient _client = new HttpClient();
-    public ObservableCollection<EventModel> Events { get; set; } = new ObservableCollection<EventModel>();
-    public Home()
+    public ObservableCollection<EventModel> AllEvents { get; set; } = new ObservableCollection<EventModel>();
+    public Events()
     {
         InitializeComponent();
         BindingContext = this;
@@ -21,11 +21,16 @@ public partial class Home : ContentPage
         var userId = Preferences.Get("UserID", null);
         if (userId == null)
             await Shell.Current.GoToAsync("Landing");
+
+
         var getEvents = await _client.GetStringAsync("http://127.0.0.1:8000/event_list/");
         var events = JsonSerializer.Deserialize<List<EventModel>>(getEvents);
         foreach (var eventModel in events)
         {
-            Events.Add(eventModel);
+            if (!AllEvents.Contains(eventModel))
+            {
+                AllEvents.Add(eventModel);
+            }
         }
 
         

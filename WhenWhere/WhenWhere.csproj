@@ -57,15 +57,29 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\date.png" />
+	  <None Remove="Resources\Images\about.png" />
+	  <None Remove="Resources\Images\created.png" />
+	  <None Remove="Resources\Images\events.png" />
+	  <None Remove="Resources\Images\flyout.png" />
+	  <None Remove="Resources\Images\flyoutheader.jpg" />
+	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\location.png" />
 	  <None Remove="Resources\Images\logo.png" />
+	  <None Remove="Resources\Images\profile.png" />
+	  <None Remove="Resources\Images\registered.png" />
+	  <None Remove="Resources\Images\time.gif" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Pages\Events.xaml.cs">
+	    <DependentUpon>Events.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -81,7 +95,7 @@
 	  <MauiXaml Update="Pages\EventDetails.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Home.xaml">
+	  <MauiXaml Update="Pages\Events.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Landing.xaml">

@@ -8,6 +8,7 @@ namespace WhenWhere
         {
             InitializeComponent();
             Routing.RegisterRoute("Landing", typeof(Landing));
+            Routing.RegisterRoute("CreateEvent", typeof(CreateEvent));
         }
     }
 }

@@ -5,12 +5,28 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:WhenWhere.Pages"
     xmlns:local="clr-namespace:WhenWhere"
-    Shell.FlyoutBehavior="Disabled"
-    Title="WhenWhere">
-
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate pages:Home}"
-        Route="Home" />
-
+    Title="WhenWhere"
+    FlyoutIcon="flyout.png">
+    
+    <FlyoutItem Title="home" Icon="home.png" Route="home">
+        <ShellContent Route="events" Icon="events.png" Title="Events"
+        ContentTemplate="{DataTemplate pages:Events}"/>
+        <ShellContent  Route="registered" Icon="created.png" Title="Created Events"
+        ContentTemplate="{DataTemplate pages:CreatedEvents}"/>
+        <ShellContent Route="created" Icon="registered.png" Title="Registered Events"
+        ContentTemplate="{DataTemplate pages:RegisteredEvents}"/>
+    </FlyoutItem>
+    <FlyoutItem Title="Profile" Icon="profile.png">
+        <ShellContent Route="profile"
+        ContentTemplate="{DataTemplate pages:Profile}"/>
+    </FlyoutItem>
+    <FlyoutItem Title="About Us" Icon="about.png">
+        <ShellContent Route="about"
+        ContentTemplate="{DataTemplate pages:AboutUs}"/>
+    </FlyoutItem>
+    <Shell.FlyoutHeader>
+        <Grid>
+            <Image Source="flyoutheader.jpg" />
+        </Grid>
+    </Shell.FlyoutHeader>
 </Shell>

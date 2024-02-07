@@ -16,5 +16,15 @@ namespace WhenWhere.Models
         public string? location {  get; set; }
 
         public string? event_maker {  get; set; }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj == null && obj.GetType() == typeof(EventModel))
+            {
+                return false;
+            }
+            var eventModel = (EventModel)obj;
+            return id == eventModel.id;
+        }
     }
 }
