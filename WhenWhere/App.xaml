@@ -24,6 +24,7 @@
                 <Setter Property="Source" Value="logo.png" />
                 <Setter Property="HeightRequest" Value="80"  ></Setter>
                 <Setter Property="HorizontalOptions" Value="Center"  ></Setter>
+                <Setter Property="Margin" Value="0,10,0,0"  ></Setter>
                 <Setter Property="BackgroundColor" Value="Transparent"  ></Setter>
 
             </Style>
@@ -31,6 +32,7 @@
                 <Setter Property="FontSize" Value="{DynamicResource MainFontSize}"  ></Setter>
                 <Setter Property="TextColor" Value="{AppThemeBinding Dark={DynamicResource MainDarkTextColor},Light={DynamicResource MainLightTextColor}}" />
                 <Setter Property="LineBreakMode" Value="WordWrap"  ></Setter>
+                <Setter Property="VerticalOptions" Value="Center"  ></Setter>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

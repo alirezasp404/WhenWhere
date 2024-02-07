@@ -3,10 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhenWhere.Pages.CreateEvent"
              Title="CreateEvent">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout>
+            <ImageButton Style="{DynamicResource Logo}"></ImageButton>
+            <ScrollView>
+                <Grid RowSpacing="10" Padding="20" ColumnSpacing="10"  ColumnDefinitions="auto,*" RowDefinitions="auto,auto,auto,auto,auto,auto,auto">
+                    <Label Text="Topic" Style="{DynamicResource Labels}" Grid.Row="0" Grid.Column="0"></Label>
+                    <Entry Grid.Row="0" Grid.Column="1"
+                            Placeholder="Enter Event Title"  Text="{Binding EventModel.title}"></Entry>
+
+                    <Label Text="Description" Style="{DynamicResource Labels}" Grid.Row="1" Grid.Column="0"></Label>
+                    <Editor Placeholder="Enter Event Description" AutoSize="TextChanges" Text="{Binding EventModel.description}" Grid.Row="1" Grid.Column="2" 
+                Margin="0,15"></Editor>
+
+                    <Label Text="When" Style="{DynamicResource Labels}" Grid.RowSpan="2" Grid.Row="2" Grid.Column="0" ></Label>
+                    <VerticalStackLayout Spacing="5" Grid.Row="2" Grid.Column="1">
+                        <DatePicker  Date="{Binding WhenDate}" />
+                        <TimePicker Time="{Binding WhenTime}" />
+                    </VerticalStackLayout>
+                    <Label Text="Where" Style="{DynamicResource Labels}" Grid.Row="4" Grid.Column="0" ></Label>
+                    <Editor Placeholder="Enter Event Location" AutoSize="TextChanges"
+                Text="{Binding EventModel.location}" Grid.Row="4" Grid.Column="1"></Editor>
+                    <Label Text="Capacity" Style="{DynamicResource Labels}" Grid.Row="5" Grid.Column="0"></Label>
+                    <Entry Grid.Row="5" Grid.Column="1"
+                            Placeholder="Enter Event Capacity"  Text="{Binding Capacity}"></Entry>
+                    <Button Text="Submit" Grid.Column="1" Grid.Row="6" Style="{DynamicResource Buttons}"
+                         HorizontalOptions="End"
+                        Margin="10"
+                        Padding="50,0,50,0"
+                        Clicked="SubmitButton_Clicked"
+            ></Button >
+                </Grid>
+            </ScrollView>
+        </VerticalStackLayout>
+
+    </ScrollView>
 </ContentPage>

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhenWhere.Pages.Events"
              Title="Events" >
-    <VerticalStackLayout Padding="5" >
+    <VerticalStackLayout Padding="5,0,5,5" >
         <ImageButton Style="{DynamicResource Logo}"></ImageButton>
         <Button Margin="0,0,10,0" HorizontalOptions="End" Style="{DynamicResource Buttons}" Clicked="CreateEventButton_Clicked" Text="Create Event"  ></Button>
         <CollectionView EmptyView="No Events to display" HeightRequest="550"

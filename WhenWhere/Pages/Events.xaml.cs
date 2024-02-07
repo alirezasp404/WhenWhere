@@ -3,12 +3,14 @@ using System.Collections.ObjectModel;
 
 using System.Text.Json;
 using WhenWhere.Models;
+using WhenWhere.Services;
 
 namespace WhenWhere.Pages;
 
 public partial class Events : ContentPage
 {
     private readonly HttpClient _client = new HttpClient();
+    private string? userId;
     public ObservableCollection<EventModel> AllEvents { get; set; } = new ObservableCollection<EventModel>();
     public Events()
     {
@@ -18,22 +20,28 @@ public partial class Events : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        var userId = Preferences.Get("UserID", null);
+        userId = Preferences.Get("UserID", null);
         if (userId == null)
             await Shell.Current.GoToAsync("Landing");
 
-
-        var getEvents = await _client.GetStringAsync("http://127.0.0.1:8000/event_list/");
-        var events = JsonSerializer.Deserialize<List<EventModel>>(getEvents);
-        foreach (var eventModel in events)
+        try
         {
-            if (!AllEvents.Contains(eventModel))
+            if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
+                throw new Exception("It seems that your internet connection has been lost. Please check your connection and try again.");
+            var events = await EventsService.GetAllEvents();
+            foreach (var eventModel in events)
             {
-                AllEvents.Add(eventModel);
+                if (!AllEvents.Contains(eventModel))
+                {
+                    AllEvents.Add(eventModel);
+                }
             }
         }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Failed", $"{ex.Message}", "OK");
+        }
 
-        
     }
 
 
@@ -44,8 +52,8 @@ public partial class Events : ContentPage
 
     }
 
-    private void CreateEventButton_Clicked(object sender, EventArgs e)
+    private async void CreateEventButton_Clicked(object sender, EventArgs e)
     {
-
+        await Shell.Current.GoToAsync($"CreateEvent?UserId={userId}");
     }
 }
