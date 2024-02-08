@@ -1,12 +1,39 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhenWhere.Pages.Profile"
              Title="Profile">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <ImageButton Style="{DynamicResource Logo}" Margin="30"></ImageButton>
+        <Frame CornerRadius="8" Padding="20,10" BackgroundColor="#E7E7E7" Margin="20,10">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="First Name:" FontAttributes="Bold" Padding="0,0,10,0" TextColor="#707070" FontSize="17"/>
+                <Label Text="Hossein" TextColor="#707070" FontSize="17"/>
+            </StackLayout>
+        </Frame>
+
+        <Frame CornerRadius="8" Padding="20,10" BackgroundColor="#E7E7E7" Margin="20,10">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Last Name:" FontAttributes="Bold" Padding="0,0,10,0" TextColor="#707070" FontSize="17"/>
+                <Label Text="Ganji" TextColor="#707070" FontSize="17"/>
+            </StackLayout>
+        </Frame>
+
+        <Frame CornerRadius="8" Padding="20,10" BackgroundColor="#E7E7E7" Margin="20,10">
+            <StackLayout Orientation="Horizontal" >
+                <Label Text="Email:" FontAttributes="Bold" Padding="0,0,10,0" TextColor="#707070" FontSize="17"/>
+                <Label Text="h.ganji2233@gmail.com" TextColor="#707070" FontSize="17"/>
+            </StackLayout>
+        </Frame>
+
+        <Grid Margin="20,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Text="My Events" FontSize="17" FontAttributes="Bold" TextColor="White" BackgroundColor="#1D4ED8" Margin="0,0,10,0"/>
+            <Button Grid.Column="1" Text="My Signed Events" FontSize="17" FontAttributes="Bold" TextColor="White" BackgroundColor="#1D4ED8" Margin="10,0,0,0"/>
+        </Grid>
+        
     </VerticalStackLayout>
 </ContentPage>
