@@ -2,43 +2,56 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        
         <StackLayout Grid.Row="0" Orientation="Horizontal" Padding="10">
+            <Image Source="event_details.jpg" WidthRequest="500" Margin="20"/>
+            <StackLayout Margin="15" WidthRequest="600">
+                <Label Text="Digikala Event for Backend and Frontend developers" FontAttributes="Bold" FontSize="20" Margin="0,20,0,10" />
+                <Label Text="Owner" FontSize="15"/>
 
-
-            <Image Source="event_details.jpg" WidthRequest="500" Margin="40,20"/>
-
-
-            <StackLayout>
-                <Label Text="Digikala Event for Backend and Frontend developers" FontAttributes="Bold" FontSize="20"/>
-                <Label Text="Owner" FontSize="17"/>
-
-                <Grid>
+                <Grid Margin="10,100,10,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" Text="Capacity: 30" FontSize="17"/>
-                    <Label Grid.Column="1" Text="Time: 15:30" FontSize="17"/>
+                    <Frame Grid.Column="0" BackgroundColor="#E7E7E7" WidthRequest="120" CornerRadius="10">
+                        <Label Text="Capacity: 30" FontSize="17"  TextColor="#707070"  HorizontalTextAlignment="Center"/>
+                    </Frame>
+                    <Frame Grid.Column="1" BackgroundColor="#E7E7E7" WidthRequest="120" CornerRadius="10">
+                        <Label Text="Time: 15:30" FontSize="17"  TextColor="#707070"  HorizontalTextAlignment="Center"/>
+                    </Frame>
                 </Grid>
                 
             </StackLayout>
         </StackLayout>
 
-        <StackLayout Grid.Row="1" Margin="10">
+        <StackLayout Grid.Row="1" Margin="30,0,0,10">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Text="Capacity: 30" FontSize="17"/>
-                <Label Grid.Column="1" Text="Time: 15:30" FontSize="17"/>
+                <Label Grid.Column="0" Text="Location:" FontSize="17" FontAttributes="Bold" Margin="0,0,10,0"/>
+                <Label Grid.Column="1" Text="Tehran, Enghelab sq, Farahzad" FontSize="17"/>
             </Grid>
-            
         </StackLayout>
 
-        <Button Grid.Row="2" Text="Register" FontSize="17" FontAttributes="Bold" TextColor="White" BackgroundColor="#1D4ED8" HorizontalOptions="FillAndExpand" Margin="10"/>
+        <StackLayout Grid.Row="2" Margin="30,0,0,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="Description:" FontSize="17" FontAttributes="Bold" Margin="0,0,10,0"/>
+                <Label Grid.Column="0" WidthRequest="1400" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Venenatis urna cursus eget nunc scelerisque. Ut eu sem integer vitae justo eget. Feugiat scelerisque varius morbi enim nunc faucibus a. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque. Tellus elementum sagittis vitae et leo duis ut. Tellus id interdum velit laoreet id donec ultrices tincidunt arcu. Facilisis gravida neque convallis a. Volutpat odio facilisis mauris sit. Ultricies mi eget mauris pharetra et ultrices. Eu feugiat pretium nibh ipsum consequat nisl vel pretium lectus. Quam id leo in vitae turpis massa sed elementum tempus. Massa sed elementum tempus egestas sed. Nisl tincidunt eget nullam non nisi est sit amet facilisis. Volutpat lacus laoreet non curabitur gravida arcu ac. Viverra adipiscing at in tellus integer feugiat. Morbi tristique senectus et netus. Adipiscing diam donec adipiscing tristique risus nec feugiat in fermentum. Et malesuada fames ac turpis egestas maecenas pharetra convallis. Egestas quis ipsum suspendisse ultrices gravida. At elementum eu facilisis sed. Pellentesque elit eget gravida cum. Ut placerat orci nulla pellentesque. Et ."
+                       FontSize="17" Margin="0,30,0,0"/>
+            </Grid>
+        </StackLayout>
+
+        <Button Grid.Row="3" Text="Register" FontSize="17" FontAttributes="Bold" TextColor="White" BackgroundColor="#1D4ED8" HorizontalOptions="FillAndExpand" Margin="10"/>
     </Grid>
 </ContentPage>
