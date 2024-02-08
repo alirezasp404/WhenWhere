@@ -24,6 +24,12 @@
         <ShellContent Route="about"
         ContentTemplate="{DataTemplate pages:AboutUs}"/>
     </FlyoutItem>
+
+    <FlyoutItem Title="Event Details">
+        <ShellContent Route="event_details"
+        ContentTemplate="{DataTemplate pages:EventDetails}"/>
+    </FlyoutItem>
+    
     <Shell.FlyoutHeader>
         <Grid>
             <Image Source="flyoutheader.jpg" />
