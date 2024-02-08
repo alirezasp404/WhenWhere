@@ -29,10 +29,10 @@ namespace WhenWhere.Services
 
             HttpResponseMessage response = await _client.PostAsync($"create_event/{userId}/", content);
         }
-        public static async Task<List<EventModel>?> GetAllEvents()
+        public static async Task<List<EventModel>?> GetAllEvents(string url)
         {
             var eventModels = new List<EventModel>();
-            HttpResponseMessage response = await _client.GetAsync("event_list/");
+            HttpResponseMessage response = await _client.GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -40,6 +40,33 @@ namespace WhenWhere.Services
                 
             }
             return eventModels;
+        }
+
+        public static async Task<List<EventModel>> GetAllRegisterdEvents(string url)
+        {
+            List<EventModel>? RegisteredEvents = new List<EventModel>();
+           
+            HttpResponseMessage response = await _client.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+               var eventModels =  JsonSerializer.Deserialize<List<RegisteredEventModel>>(content, _serializerOptions);
+
+                var allEvents= await GetAllEvents("event_list/");
+               
+                foreach (int eventId in eventModels[0].events)
+                {
+                    foreach (var item in allEvents)
+                    {
+                        if(item.id == eventId)
+                        {
+                            RegisteredEvents.Add(item);
+                        }
+                    }
+                }
+                
+            }
+            return RegisteredEvents;
         }
     }
 }
