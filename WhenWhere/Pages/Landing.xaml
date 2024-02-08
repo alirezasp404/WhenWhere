@@ -3,10 +3,52 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhenWhere.Pages.Landing"
              Title="Landing">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Frame BorderColor="blue" Margin="10">
+        <Grid RowDefinitions="3* ,auto,* ,* " >
+
+            <Image
+                  Grid.Row="0"  
+                    Source="logo.png"
+                    SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                    HeightRequest="200"
+                    HorizontalOptions="Center" />
+
+
+
+            <Frame BorderColor="blue" Grid.Row="1" Margin="20" MaximumWidthRequest="1600" >
+                <VerticalStackLayout>
+                    <Label Margin="2"
+                           FontSize="Subtitle"
+                    
+                        Text="Welcome to WhenWhere, your go-to platform for all things events! Whether you're looking to create your own event or discover and sign up for exciting gatherings happening around you, we've got you covered.
+With WhenWhere, organizing your dream event has never been easier. Our user-friendly event creation tool allows you to effortlessly plan and tailor every detail to perfection./n Whether it's a small get-together, a corporate conference, or a grand celebration, our intuitive interface ensures a seamless experience from start to finish."
+                    HorizontalOptions="Center" />
+                    <Label Margin="2"
+                           HorizontalOptions="Center"
+                           FontSize="Subtitle"
+                    
+                        Text="Not in the mood to be the organizer? No problem! WhenWhere also offers a unique feature that allows you to explore and sign up for a wide range of events happening in your area. From music concerts and art exhibitions to workshops and sports tournaments, our comprehensive event directory has something for everyone."/>
+
+                </VerticalStackLayout>
+            </Frame>
+            <Button Grid.Row="2" Text="About Us" BackgroundColor="Black" BorderColor="Black" TextColor="White" HorizontalOptions="Center" Margin="5" FontSize="Medium"/>
+            <Grid Grid.Row="3" ColumnDefinitions="* ,*" VerticalOptions="Center">
+                <Button
+                    Grid.Column="0"
+                    Margin="10"
+                    Text="login"
+                    BackgroundColor="Blue"
+                    TextColor="White"
+                    Clicked="Login_clicked"/>
+                <Button
+                    Margin="10"
+                    Grid.Column="1"
+                    Text="register"
+                    BackgroundColor="blue"
+                    TextColor="White"
+                    Clicked="SignUp_clicked"/>
+
+            </Grid>
+        </Grid>
+    </Frame>
 </ContentPage>
