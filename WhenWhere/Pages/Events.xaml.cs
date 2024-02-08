@@ -9,7 +9,6 @@ namespace WhenWhere.Pages;
 
 public partial class Events : ContentPage
 {
-    private readonly HttpClient _client = new HttpClient();
     private string? userId;
     public ObservableCollection<EventModel> AllEvents { get; set; } = new ObservableCollection<EventModel>();
     public Events()
@@ -20,6 +19,8 @@ public partial class Events : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
+        Preferences.Set("UserID", "3");
+
         userId = Preferences.Get("UserID", null);
         if (userId == null)
             await Shell.Current.GoToAsync("Landing");
@@ -28,7 +29,7 @@ public partial class Events : ContentPage
         {
             if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
                 throw new Exception("It seems that your internet connection has been lost. Please check your connection and try again.");
-            var events = await EventsService.GetAllEvents();
+            var events = await EventsService.GetAllEvents("event_list/");
             foreach (var eventModel in events)
             {
                 if (!AllEvents.Contains(eventModel))
