@@ -58,8 +58,10 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\about.png" />
+	  <None Remove="Resources\Images\capacity.png" />
 	  <None Remove="Resources\Images\created.png" />
 	  <None Remove="Resources\Images\events.png" />
+	  <None Remove="Resources\Images\event_maker.png" />
 	  <None Remove="Resources\Images\flyout.png" />
 	  <None Remove="Resources\Images\flyoutheader.jpg" />
 	  <None Remove="Resources\Images\home.png" />
