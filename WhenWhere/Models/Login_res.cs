@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MauiApp9.Models
+namespace WhenWhere.Models
 {
     public class Login_res
     {
