@@ -37,6 +37,7 @@ public partial class RegisteredEvents : ContentPage
         {
             await DisplayAlert("Failed", $"{ex.Message}", "OK");
         }
+		
 
     }
 }
