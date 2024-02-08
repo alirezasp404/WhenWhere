@@ -37,6 +37,7 @@ public partial class CreatedEvents : ContentPage
         {
             await DisplayAlert("Failed", $"{ex.Message}", "OK");
         }
+		
 
     }
 }
