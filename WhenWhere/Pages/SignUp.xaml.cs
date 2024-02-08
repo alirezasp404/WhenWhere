@@ -47,8 +47,7 @@ public partial class SignUp : ContentPage
             {
                 await DisplayAlert("Done", "please login", "OK");
 
-                //await shell.current.gotoasync("login");
-
+                await Shell.Current.GoToAsync("SignIn");
 
             }
             else

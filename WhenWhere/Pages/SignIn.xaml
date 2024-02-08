@@ -31,7 +31,7 @@
             <Entry Text="{Binding password}" Grid.Row="4" IsPassword="True" Margin="10" Background="white" TextColor="Black"/>
 
             <Button Text="Login" Grid.Row="5"  Background="blue" TextColor="White" Margin="0,30,0,0" Clicked="Login_clicked"/>
-            <Button Text="if you dont have account sign up"  Background="Black" BorderColor="Black" TextColor="White"  FontSize="20" Grid.Row="6"/>
+            <Button Text="sign up" TextColor="Blue" Clicked="SignUp_Clicked" Background="Black" BorderWidth="0"  FontSize="20" Grid.Row="6"/>
         </Grid>
 
     </Frame>

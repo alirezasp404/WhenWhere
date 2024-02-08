@@ -43,7 +43,7 @@ public partial class SignIn : ContentPage
                 string content = await response.Content.ReadAsStringAsync();
                 var Items = JsonSerializer.Deserialize<Login_res>(content);
                 Preferences.Set("UserID", Items.id.ToString());
-                //await shell.current.gotoasync("home/events");
+                await Shell.Current.GoToAsync("../..");
             }
             else
             {
@@ -70,5 +70,10 @@ public partial class SignIn : ContentPage
         }
 
         return true;
+    }
+
+    private async void SignUp_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("SignUp");
     }
 }

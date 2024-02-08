@@ -19,7 +19,7 @@ public partial class Events : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        Preferences.Set("UserID", "3");
+        //Preferences.Set("UserID", null);
 
         userId = Preferences.Get("UserID", null);
         if (userId == null)
