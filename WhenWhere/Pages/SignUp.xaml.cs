@@ -59,7 +59,7 @@ public partial class SignUp : ContentPage
 
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             await DisplayAlert("Error", "An error occurred during Sign Up", "OK");
 

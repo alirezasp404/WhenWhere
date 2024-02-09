@@ -19,12 +19,12 @@ namespace WhenWhere.Models
 
         public override bool Equals(object? obj)
         {
-            if (obj == null && obj.GetType() == typeof(EventModel))
+            if (obj == null && obj?.GetType() == typeof(EventModel))
             {
                 return false;
             }
-            var eventModel = (EventModel)obj;
-            return id == eventModel.id;
+            var eventModel = (EventModel?)obj;
+            return id == eventModel?.id;
         }
     }
 }

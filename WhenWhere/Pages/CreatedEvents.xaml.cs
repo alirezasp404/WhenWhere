@@ -23,19 +23,23 @@ public partial class CreatedEvents : ContentPage
             if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
                 throw new Exception("It seems that your internet connection has been lost. Please check your connection and try again.");
             var events = await EventsService.GetAllEvents($"create_event/{userId}/");
-            foreach (var eventModel in events)
+            if (events != null)
             {
-                if (!AllEvents.Contains(eventModel))
+
+                foreach (var eventModel in events)
                 {
-                    AllEvents.Add(eventModel);
+                    if (!AllEvents.Contains(eventModel))
+                    {
+                        AllEvents.Add(eventModel);
+                    }
                 }
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             await DisplayAlert("Failed", "An error occurred while loading your created events", "OK");
         }
-		
+
 
     }
 }

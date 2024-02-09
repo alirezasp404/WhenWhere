@@ -41,7 +41,7 @@ public partial class SignIn : ContentPage
             {
                 string content = await response.Content.ReadAsStringAsync();
                 var Items = JsonSerializer.Deserialize<Login_res>(content);
-                Preferences.Set("UserID", Items.id.ToString());
+                Preferences.Set("UserID", Items?.id.ToString());
                 await Shell.Current.GoToAsync("//home");
             }
             else
@@ -49,7 +49,7 @@ public partial class SignIn : ContentPage
                 await DisplayAlert("Error", "email or password is wrong", "OK");
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             await DisplayAlert("Error", "An error occurred during Sign In", "OK");
 

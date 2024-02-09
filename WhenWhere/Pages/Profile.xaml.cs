@@ -17,7 +17,7 @@ public partial class Profile : ContentPage
         try
         {
             profileModel = await EventsService.GetProfileModel(Preferences.Get("UserId", null));
-        } catch (Exception ex)
+        } catch (Exception)
         {
             await DisplayAlert("Failed", "An error occurred while loading your Profile", "OK");
 

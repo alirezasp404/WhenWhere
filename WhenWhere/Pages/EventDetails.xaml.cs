@@ -7,8 +7,8 @@ public partial class EventDetails : ContentPage
 {
 
 
-    private EventModel eventModel;
-    public EventModel EventModel
+    private EventModel? eventModel;
+    public EventModel? EventModel
     {
         get => eventModel;
         set
@@ -27,11 +27,12 @@ public partial class EventDetails : ContentPage
         try
         {
 
-            var isRegistered = await EventsService.RegisterEvent(eventModel.id, Preferences.Get("UserId", null));
+            var isRegistered = await EventsService.RegisterEvent(eventModel?.id, Preferences.Get("UserId", null));
             if (isRegistered)
-                await DisplayAlert("Done", $"You Registered in \"{eventModel.title}\"", "OK");
+                await DisplayAlert("Done", $"You Registered in \"{eventModel?.title}\"", "OK");
 
-        }catch (Exception ex)
+        }
+        catch (Exception)
         {
             await DisplayAlert("Failed", "An error occurred while registering for this event. Please try again", "OK");
         }

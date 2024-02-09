@@ -43,7 +43,7 @@ public partial class CreateEvent : ContentPage
             await Shell.Current.GoToAsync("..");
             await DisplayAlert("Done", "Your event has been successfully created", "OK");
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             await DisplayAlert("Failed", "An error occurred while registering for this event. Please try again", "OK");
         }
