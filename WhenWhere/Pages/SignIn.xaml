@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhenWhere.Pages.SignIn"
              Title="SignIn">
-    
+
     <Frame Margin="10" BorderColor="Blue">
         <Grid Margin="20" Padding="10">
             <Grid.RowDefinitions>
@@ -30,8 +30,12 @@
             <Label Text="  Password" Grid.Row="3" HorizontalOptions="Start" Margin="5"/>
             <Entry Text="{Binding password}" Grid.Row="4" IsPassword="True" Margin="10" Background="white" TextColor="Black"/>
 
-            <Button Text="Login" Grid.Row="5"  Background="blue" TextColor="White" Margin="0,30,0,0" Clicked="Login_clicked"/>
-            <Button Text="sign up" TextColor="Blue" Clicked="SignUp_Clicked" Background="Black" BorderWidth="0"  FontSize="20" Grid.Row="6"/>
+            <Button Text="Sign In" Grid.Row="5" FontSize="22"  Background="blue" TextColor="White" Margin="0,30,0,0" Clicked="Login_clicked"/>
+            <HorizontalStackLayout HorizontalOptions="Center"  Grid.Row="6">
+                <Label Text="If you do not have an account" VerticalOptions="Center"   FontSize="15" ></Label>
+                <Button Text="sign up" Padding="5" TextColor="Blue" Clicked="SignUp_Clicked" Background="Black" BorderWidth="0"  FontSize="20"/>
+
+            </HorizontalStackLayout>
         </Grid>
 
     </Frame>

@@ -31,14 +31,14 @@
                 <Button
                     Grid.Column="0"
                     Margin="10"
-                    Text="login"
+                    Text="Sign In"
                     BackgroundColor="Blue"
                     TextColor="White"
                     Clicked="Login_clicked"/>
                 <Button
                     Margin="10"
                     Grid.Column="1"
-                    Text="register"
+                    Text="Sign Up"
                     BackgroundColor="blue"
                     TextColor="White"
                     Clicked="SignUp_clicked"/>

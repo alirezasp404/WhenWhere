@@ -28,7 +28,7 @@
 
             <Label Text="  Confirm password"  HorizontalOptions="Start" Margin="3" />
             <Entry x:Name="confirm_password_entry" Grid.Row="9" Margin="10" Background="White"  IsPassword="True" TextColor="Black"/>
-            <Button Text="Sign Up" Grid.Row="2" Background="blue" TextColor="White" Clicked="SignUp_clicked" Margin="0 ,30 ,0 ,0 " VerticalOptions="End"/>
+            <Button FontSize="22" Text="Sign Up" Grid.Row="2" Background="blue" TextColor="White" Clicked="SignUp_clicked" Margin="0 ,30 ,0 ,0 " VerticalOptions="End"/>
 
 
         </VerticalStackLayout>

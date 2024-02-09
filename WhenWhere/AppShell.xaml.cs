@@ -16,6 +16,7 @@ namespace WhenWhere
             {
                 landingflyout.IsVisible = false;
             }
+            
         }
 
         private async void MenuItem_Clicked(object sender, EventArgs e)
