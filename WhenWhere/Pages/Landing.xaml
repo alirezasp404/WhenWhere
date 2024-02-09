@@ -4,9 +4,9 @@
              x:Class="WhenWhere.Pages.Landing"
              Title="Landing">
     <Frame BorderColor="blue" Margin="10">
+        <Image x:Name="BackgroundImage" Aspect="AspectFit" />
         <Grid RowDefinitions="3* ,auto,* ,* " >
-
-            <Image
+            <Image Source="flyoutheader.png" Aspect="AspectFit" /><Image
                   Grid.Row="0"  
                     Source="logo.png"
                     SemanticProperties.Description="Cute dot net bot waving hi to you!"
@@ -19,19 +19,10 @@
                 <VerticalStackLayout>
                     <Label Margin="2"
                            FontSize="Subtitle"
-                    
-                        Text="Welcome to WhenWhere, your go-to platform for all things events! Whether you're looking to create your own event or discover and sign up for exciting gatherings happening around you, we've got you covered.
-With WhenWhere, organizing your dream event has never been easier. Our user-friendly event creation tool allows you to effortlessly plan and tailor every detail to perfection./n Whether it's a small get-together, a corporate conference, or a grand celebration, our intuitive interface ensures a seamless experience from start to finish."
+                        Text="Welcome to WhenWhere, your go-to platform for all things events! Whether you're looking to create your own event or discover and sign up for exciting gatherings happening around you, we've got you covered.With WhenWhere, organizing your dream event has never been easier. Our user-friendly event creation tool allows you to effortlessly plan and tailor every detail to perfection./n Whether it's a small get-together, a corporate conference, or a grand celebration, our intuitive interface ensures a seamless experience from start to finish."
                     HorizontalOptions="Center" />
-                    <Label Margin="2"
-                           HorizontalOptions="Center"
-                           FontSize="Subtitle"
-                    
-                        Text="Not in the mood to be the organizer? No problem! WhenWhere also offers a unique feature that allows you to explore and sign up for a wide range of events happening in your area. From music concerts and art exhibitions to workshops and sports tournaments, our comprehensive event directory has something for everyone."/>
-
                 </VerticalStackLayout>
             </Frame>
-            <Button Grid.Row="2" Text="About Us" BackgroundColor="Black" BorderColor="Black" TextColor="White" HorizontalOptions="Center" Margin="5" FontSize="Medium"/>
             <Grid Grid.Row="3" ColumnDefinitions="* ,*" VerticalOptions="Center">
                 <Button
                     Grid.Column="0"

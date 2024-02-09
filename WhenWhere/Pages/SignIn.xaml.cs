@@ -11,7 +11,8 @@ public partial class SignIn : ContentPage
     public Login_model Login { get; set; } = new Login_model();
     public SignIn()
     {
-
+        Shell.SetFlyoutBehavior(this, FlyoutBehavior.Disabled);
+        Shell.SetTabBarIsVisible(this, false);
         InitializeComponent();
         BindingContext = Login;
     }
@@ -43,7 +44,7 @@ public partial class SignIn : ContentPage
                 string content = await response.Content.ReadAsStringAsync();
                 var Items = JsonSerializer.Deserialize<Login_res>(content);
                 Preferences.Set("UserID", Items.id.ToString());
-                await Shell.Current.GoToAsync("../..");
+                await Shell.Current.GoToAsync("//home");
             }
             else
             {

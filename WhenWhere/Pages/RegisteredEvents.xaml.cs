@@ -10,15 +10,13 @@ public partial class RegisteredEvents : ContentPage
     public ObservableCollection<EventModel> AllEvents { get; set; } = new ObservableCollection<EventModel>();
     public RegisteredEvents()
     {
+        userId = Preferences.Get("UserId", null);
         InitializeComponent();
         BindingContext = this;
     }
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        userId = Preferences.Get("UserID", null);
-        if (userId == null)
-            await Shell.Current.GoToAsync("Landing");
 
         try
         {
@@ -37,7 +35,5 @@ public partial class RegisteredEvents : ContentPage
         {
             await DisplayAlert("Failed", $"{ex.Message}", "OK");
         }
-		
-
     }
 }

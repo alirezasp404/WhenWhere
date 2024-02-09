@@ -1,22 +1,29 @@
+
+
 namespace WhenWhere.Pages;
 
 public partial class Landing : ContentPage
 {
+
     public Landing()
     {
+        Shell.SetFlyoutBehavior(this, FlyoutBehavior.Disabled);
+        Shell.SetTabBarIsVisible(this, false);
         InitializeComponent();
+
+
     }
+  
 
 
-    private void Login_clicked(object sender, EventArgs e)
+    private async void Login_clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new SignIn());
+       await Shell.Current.GoToAsync("SignIn");
     }
-    private void SignUp_clicked(object sender, EventArgs e)
+    private async void SignUp_clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new SignUp());
-
-
+        await Shell.Current.GoToAsync("SignUp");
+        
     }
-    
+
 }

@@ -67,6 +67,7 @@
 	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\location.png" />
 	  <None Remove="Resources\Images\logo.png" />
+	  <None Remove="Resources\Images\logout.png" />
 	  <None Remove="Resources\Images\profile.png" />
 	  <None Remove="Resources\Images\registered.png" />
 	  <None Remove="Resources\Images\time.gif" />

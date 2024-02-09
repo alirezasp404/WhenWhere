@@ -10,16 +10,13 @@ public partial class CreatedEvents : ContentPage
     public ObservableCollection<EventModel> AllEvents { get; set; } = new ObservableCollection<EventModel>();
     public CreatedEvents()
     {
+        userId = Preferences.Get("UserId", null);
         InitializeComponent();
         BindingContext = this;
     }
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        userId = Preferences.Get("UserID", null);
-        if (userId == null)
-            await Shell.Current.GoToAsync("Landing");
-
         try
         {
             if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)

@@ -9,7 +9,6 @@ namespace WhenWhere.Pages;
 
 public partial class Events : ContentPage
 {
-    private string? userId;
     public ObservableCollection<EventModel> AllEvents { get; set; } = new ObservableCollection<EventModel>();
     public Events()
     {
@@ -19,12 +18,6 @@ public partial class Events : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        //Preferences.Set("UserID", null);
-
-        userId = Preferences.Get("UserID", null);
-        if (userId == null)
-            await Shell.Current.GoToAsync("Landing");
-
         try
         {
             if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
@@ -55,6 +48,6 @@ public partial class Events : ContentPage
 
     private async void CreateEventButton_Clicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync($"CreateEvent?UserId={userId}");
+        await Shell.Current.GoToAsync("CreateEvent?UserId");
     }
 }

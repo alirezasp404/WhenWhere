@@ -7,9 +7,11 @@
     xmlns:local="clr-namespace:WhenWhere"
     Title="WhenWhere"
     FlyoutIcon="flyout.png">
-    
-    <FlyoutItem Title="home" Icon="home.png" Route="home">
-        <ShellContent Route="events" Icon="events.png" Title="Events"
+
+    <ShellContent  x:Name="landingflyout" Route="landing" FlyoutItemIsVisible="False"
+        ContentTemplate="{DataTemplate pages:Landing}"/>
+    <FlyoutItem  Title="home" Icon="home.png" Route="home">
+        <ShellContent x:Name="flyoutevents"  Route="events" Icon="events.png" Title="Events"
         ContentTemplate="{DataTemplate pages:Events}"/>
         <ShellContent  Route="registered" Icon="created.png" Title="Created Events"
         ContentTemplate="{DataTemplate pages:CreatedEvents}"/>
@@ -24,6 +26,8 @@
         <ShellContent Route="about"
         ContentTemplate="{DataTemplate pages:AboutUs}"/>
     </FlyoutItem>
+    <MenuItem Text="Log Out" IconImageSource="logout.png"
+              Clicked="MenuItem_Clicked" />
     <Shell.FlyoutHeader>
         <Grid>
             <Image Source="flyoutheader.jpg" />

@@ -11,6 +11,8 @@ public partial class SignUp : ContentPage
 
     public SignUp()
     {
+        Shell.SetFlyoutBehavior(this, FlyoutBehavior.Disabled);
+        Shell.SetTabBarIsVisible(this, false);
         InitializeComponent();
         BindingContext = Register;
 
