@@ -1,6 +1,6 @@
 
 using System.Collections.ObjectModel;
-
+using System.ComponentModel;
 using System.Text.Json;
 using WhenWhere.Models;
 using WhenWhere.Services;
@@ -33,21 +33,25 @@ public partial class Events : ContentPage
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Failed", $"{ex.Message}", "OK");
+            await DisplayAlert("Failed", "An error occurred while loading all events", "OK");
         }
 
     }
 
 
 
-    private void RegisterButton_Clicked(object sender, EventArgs e)
+    private async void RegisterButton_Clicked(object sender, EventArgs e)
     {
         var eventModel = (EventModel)((Button)sender).BindingContext;
-
+        await Shell.Current.GoToAsync("event_details", true, new Dictionary<string, object>
+        {
+            ["EventModel"] = eventModel,
+            
+        }) ; 
     }
 
     private async void CreateEventButton_Clicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("CreateEvent?UserId");
+        await Shell.Current.GoToAsync("CreateEvent");
     }
 }

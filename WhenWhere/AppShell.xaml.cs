@@ -10,6 +10,7 @@ namespace WhenWhere
             Routing.RegisterRoute("CreateEvent", typeof(CreateEvent));
             Routing.RegisterRoute("SignIn", typeof(SignIn));
             Routing.RegisterRoute("SignUp", typeof(SignUp));
+            Routing.RegisterRoute("event_details", typeof(EventDetails));
             var userId = Preferences.Get("UserId", null);
             if (userId != null)
             {

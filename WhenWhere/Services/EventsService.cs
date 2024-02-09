@@ -1,4 +1,6 @@
 ﻿
+using System;
+using System.ComponentModel;
 using System.Text;
 using System.Text.Json;
 using WhenWhere.Models;
@@ -71,6 +73,30 @@ namespace WhenWhere.Services
             }
             
             return RegisteredEvents;
+        }
+        public static async Task<bool> RegisterEvent(int? eventId,string? userId)
+        {
+            var registerEvent=new RegisterEventDetailsModel();
+            registerEvent.events.Add(eventId);
+            string json = JsonSerializer.Serialize(registerEvent, _serializerOptions);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await _client.PostAsync($"select_event/{userId}/", content);
+            return response.IsSuccessStatusCode;
+
+        }
+        public static async Task<ProfileModel?> GetProfileModel(string? UserId)
+        {
+            var profileModel = new ProfileModel();
+            HttpResponseMessage response = await _client.GetAsync($"login/{UserId}");
+            if (response.IsSuccessStatusCode)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+                 profileModel = JsonSerializer.Deserialize<ProfileModel>(content, _serializerOptions);
+
+            }
+            return profileModel;
+
         }
     }
 }

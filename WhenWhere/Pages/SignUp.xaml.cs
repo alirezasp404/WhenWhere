@@ -28,17 +28,18 @@ public partial class SignUp : ContentPage
             if (string.IsNullOrWhiteSpace(Register.first_name) || string.IsNullOrWhiteSpace(Register.last_name) ||
                 string.IsNullOrWhiteSpace(Register.last_name) || string.IsNullOrWhiteSpace(Register.email) || string.IsNullOrWhiteSpace(confirmPassword))
             {
-                throw new Exception("All fields are required.");
-            }
-
-            if (Register.password != confirmPassword)
-            {
-                throw new Exception("Passwords do not match.");
+                await DisplayAlert("Error", "All fields are required.", "OK");
 
             }
-            if (!ValidateEmail(Register.email))
+
+            else if (Register.password != confirmPassword)
             {
-                throw new Exception("format of email is not valid");
+                await DisplayAlert("Error", "Passwords do not match.", "OK");
+
+            }
+            else if (!ValidateEmail(Register.email))
+            {
+                await DisplayAlert("Error", "format of email is not valid", "OK");
 
             }
 
@@ -47,20 +48,20 @@ public partial class SignUp : ContentPage
             HttpResponseMessage response = await _client.PostAsync("http://127.0.0.1:8000/register", content1);
             if (response.IsSuccessStatusCode)
             {
-                await DisplayAlert("Done", "please login", "OK");
+                await DisplayAlert("Done", "Your registration was successful. Please Sign In", "OK");
 
                 await Shell.Current.GoToAsync("SignIn");
 
             }
             else
             {
-                throw new Exception("email or password is wrong");
+                await DisplayAlert("Error", "email or password is wrong", "OK");
 
             }
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Error", ex.Message, "OK");
+            await DisplayAlert("Error", "An error occurred during Sign Up", "OK");
 
         }
 

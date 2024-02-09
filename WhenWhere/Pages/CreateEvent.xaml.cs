@@ -41,10 +41,11 @@ public partial class CreateEvent : ContentPage
             EventModel.capacity = capacity;
             await EventsService.CreateEvent(EventModel, userId);
             await Shell.Current.GoToAsync("..");
+            await DisplayAlert("Done", "Your event has been successfully created", "OK");
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Failed", $"{ex.Message}", "OK");
+            await DisplayAlert("Failed", "An error occurred while registering for this event. Please try again", "OK");
         }
 
     }

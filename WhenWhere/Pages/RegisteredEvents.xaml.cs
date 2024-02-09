@@ -33,7 +33,7 @@ public partial class RegisteredEvents : ContentPage
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Failed", $"{ex.Message}", "OK");
+            await DisplayAlert("Failed", "An error occurred while loading your registered events", "OK");
         }
     }
 }

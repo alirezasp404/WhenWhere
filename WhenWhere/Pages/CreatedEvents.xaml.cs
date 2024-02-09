@@ -11,6 +11,7 @@ public partial class CreatedEvents : ContentPage
     public CreatedEvents()
     {
         userId = Preferences.Get("UserId", null);
+
         InitializeComponent();
         BindingContext = this;
     }
@@ -32,7 +33,7 @@ public partial class CreatedEvents : ContentPage
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Failed", $"{ex.Message}", "OK");
+            await DisplayAlert("Failed", "An error occurred while loading your created events", "OK");
         }
 		
 

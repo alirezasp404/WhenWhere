@@ -20,21 +20,19 @@ public partial class SignIn : ContentPage
     {
         HttpClient _client = new HttpClient();
 
+        try
+        {
 
         if (string.IsNullOrWhiteSpace(Login.email) || string.IsNullOrWhiteSpace(Login.password))
         {
             await DisplayAlert("Error", "All fields are required.", "OK");
-        }
-
-        if (!ValidateEmail(Login.email))
+        }else if (!ValidateEmail(Login.email))
         {
             await DisplayAlert("Error", "format of email is not valid", "OK");
 
         }
 
 
-        try
-        {
             string json = JsonSerializer.Serialize(Login);
             StringContent content1 = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -48,13 +46,12 @@ public partial class SignIn : ContentPage
             }
             else
             {
-                throw new Exception("email or password is wrong");
-
+                await DisplayAlert("Error", "email or password is wrong", "OK");
             }
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Error", ex.Message, "OK");
+            await DisplayAlert("Error", "An error occurred during Sign In", "OK");
 
         }
 

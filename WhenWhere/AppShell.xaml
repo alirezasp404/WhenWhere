@@ -13,9 +13,9 @@
     <FlyoutItem  Title="home" Icon="home.png" Route="home">
         <ShellContent x:Name="flyoutevents"  Route="events" Icon="events.png" Title="Events"
         ContentTemplate="{DataTemplate pages:Events}"/>
-        <ShellContent  Route="registered" Icon="created.png" Title="Created Events"
+        <ShellContent Route="created"  Icon="created.png" Title="Created Events"
         ContentTemplate="{DataTemplate pages:CreatedEvents}"/>
-        <ShellContent Route="created" Icon="registered.png" Title="Registered Events"
+        <ShellContent Route="registered"  Icon="registered.png" Title="Registered Events"
         ContentTemplate="{DataTemplate pages:RegisteredEvents}"/>
     </FlyoutItem>
     <FlyoutItem Title="Profile" Icon="profile.png">
