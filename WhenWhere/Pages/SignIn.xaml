@@ -31,8 +31,8 @@
             <Entry Text="{Binding password}" Grid.Row="4" IsPassword="True" Margin="10" Background="white" TextColor="Black"/>
 
             <Button Text="Sign In" Grid.Row="5" FontSize="22"  Background="blue" TextColor="White" Margin="0,30,0,0" Clicked="Login_clicked"/>
-            <HorizontalStackLayout HorizontalOptions="Center"  Grid.Row="6">
-                <Label Text="If you do not have an account" VerticalOptions="Center"   FontSize="15" ></Label>
+            <HorizontalStackLayout Margin="0,20,0,0" HorizontalOptions="Center"  Grid.Row="6">
+                <Label Text="If you do not have an account" VerticalOptions="Center"   FontSize="13" ></Label>
                 <Button Text="sign up" Padding="5" TextColor="Blue" Clicked="SignUp_Clicked" Background="Black" BorderWidth="0"  FontSize="20"/>
 
             </HorizontalStackLayout>

@@ -55,13 +55,13 @@ namespace WhenWhere.Services
                 string content = await response.Content.ReadAsStringAsync();
                 var eventModels = JsonSerializer.Deserialize<List<RegisteredEventModel>>(content, _serializerOptions);
 
-                if (eventModels?.Count <= 0)
+                if (eventModels.Count <= 0)
                     return RegisteredEvents;
 
                 var allEvents = await GetAllEvents("event_list/");
-                if (allEvents?.Count > 0 && eventModels?.Count > 0)
+                if (allEvents.Count > 0 && eventModels.Count > 0)
                 {
-                    foreach (int eventId in eventModels[0]?.events)
+                    foreach (int eventId in eventModels[0].events)
                     {
                         foreach (var item in allEvents)
                         {

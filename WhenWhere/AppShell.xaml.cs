@@ -11,12 +11,11 @@ namespace WhenWhere
             Routing.RegisterRoute("SignIn", typeof(SignIn));
             Routing.RegisterRoute("SignUp", typeof(SignUp));
             Routing.RegisterRoute("event_details", typeof(EventDetails));
-            //var userId = Preferences.Get("UserId", null);
-            //if (userId != null)
-            //{
+            var userId = Preferences.Get("UserId", null);
+            if (userId != null)
+            {
                 landingflyout.IsVisible = false;
-            //}
-            Preferences.Set("UserId", "1");
+            }
         }
 
         private async void MenuItem_Clicked(object sender, EventArgs e)

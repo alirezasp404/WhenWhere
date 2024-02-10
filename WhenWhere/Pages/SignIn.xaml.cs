@@ -23,14 +23,15 @@ public partial class SignIn : ContentPage
         try
         {
 
-        if (string.IsNullOrWhiteSpace(Login.email) || string.IsNullOrWhiteSpace(Login.password))
-        {
-            await DisplayAlert("Error", "All fields are required.", "OK");
-        }else if (!ValidateEmail(Login.email))
-        {
-            await DisplayAlert("Error", "format of email is not valid", "OK");
+            if (string.IsNullOrWhiteSpace(Login.email) || string.IsNullOrWhiteSpace(Login.password))
+            {
+                await DisplayAlert("Error", "All fields are required.", "OK");
+            }
+            else if (!ValidateEmail(Login.email))
+            {
+                await DisplayAlert("Error", "format of email is not valid", "OK");
 
-        }
+            }
 
 
             string json = JsonSerializer.Serialize(Login);
@@ -43,7 +44,7 @@ public partial class SignIn : ContentPage
                 var Items = JsonSerializer.Deserialize<Login_res>(content);
                 if (Items.id > 0)
                 {
-                    Preferences.Set("UserID", Items?.id.ToString());
+                    Preferences.Set("UserId", Items?.id.ToString());
                     await Shell.Current.GoToAsync("//home");
                 }
             }

@@ -3,6 +3,9 @@
         <Grid Padding="20" RowDefinitions="*,auto">
             
         <VerticalStackLayout Grid.Row="0" Spacing="20" >
+                <ScrollView Orientation="Horizontal"
+                            >
+                    
             <Grid RowSpacing="20" ColumnDefinitions="auto,*,auto,*,auto,*,auto,*" RowDefinitions="auto,auto">
                 <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="7"  HorizontalOptions="Center" Text="{Binding title}" FontAttributes="Bold" FontSize="20" />
                     <Image Grid.RowSpan="2" Grid.Row="0" Grid.Column="0" Source="event_profile.png" HeightRequest="300"/>
@@ -25,6 +28,7 @@
                     </VerticalStackLayout>
                 </Frame>
             </Grid>
+                </ScrollView>
 
             <StackLayout >
 

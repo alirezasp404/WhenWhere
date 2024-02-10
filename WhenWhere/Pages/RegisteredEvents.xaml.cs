@@ -21,7 +21,10 @@ public partial class RegisteredEvents : ContentPage
         try
         {
             if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
-                throw new Exception("It seems that your internet connection has been lost. Please check your connection and try again.");
+            {
+                await DisplayAlert("Failed", "It seems that your internet connection has been lost. Please check your connection and try again.", "OK");
+                throw new Exception();
+            }
             var events = await EventsService.GetAllRegisterdEvents($"select_event/{userId}/");
             foreach (var eventModel in events)
             {

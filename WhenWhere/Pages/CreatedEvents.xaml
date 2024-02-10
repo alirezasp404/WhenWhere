@@ -6,7 +6,7 @@
     <VerticalStackLayout Padding="5,0,5,5" >
         <ImageButton Style="{DynamicResource Logo}"></ImageButton>
         <Button Margin="0,0,10,0" HorizontalOptions="End" Style="{DynamicResource Buttons}" Clicked="CreateEventButton_Clicked" Text="Create Event"  ></Button>
-        <CollectionView EmptyView="No Events to display" HeightRequest="550"
+        <CollectionView EmptyView="No Events to display" HeightRequest="600"
             ItemsSource="{Binding AllEvents}" ItemsUpdatingScrollMode="KeepItemsInView">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -19,7 +19,7 @@
                                     <Image Grid.Column="0" Grid.Row="0"  WidthRequest="20" Source="time.gif"></Image>
                                     <Label Grid.Column="1" Grid.Row="0"  Text="{Binding expired_at}"  FontSize="12"  Style="{DynamicResource Labels}" />
 
-                                    <Image Grid.Column="0" Grid.Row="1"  Source="location.png" WidthRequest="20"></Image>
+                                    <Image Grid.Column="0" Grid.Row="1" VerticalOptions="Start"  Source="location.png" WidthRequest="20"></Image>
                                     <Label Grid.Column="1" Grid.Row="1"  Text="{Binding location}"   FontSize="12"  Style="{DynamicResource Labels}" />
 
                                     <Image Grid.Column="0" Grid.Row="2"  Source="capacity.png" WidthRequest="20"></Image>

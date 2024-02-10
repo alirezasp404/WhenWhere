@@ -3,30 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhenWhere.Pages.Landing"
              Title="Landing">
+    <ScrollView>
+        
     <Frame BackgroundColor="Black" BorderColor="blue" Margin="10">
   
         <Grid RowDefinitions="3* ,auto,* ,* " >
-                <!--<Image Grid.Row="0" Grid.RowSpan="4" Source="landing.png" Aspect="AspectFill">
 
-                </Image>-->
                 <Image
                   Grid.Row="0"  
                     Source="logo.png"
                     SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                    HeightRequest="200"
+                    HeightRequest="{OnIdiom 100,Desktop=200}"
                     HorizontalOptions="Center" />
 
 
 
-            <Frame BackgroundColor="Black" BorderColor="blue" Grid.Row="1" Margin="20" >
+            <Frame  HorizontalOptions="Center" BorderColor="Blue" BackgroundColor="Black" Grid.Row="1">
                 <VerticalStackLayout>
-                    <Label Margin="2" 
+                    <Image  Source="flyoutheader.jpg" IsVisible="{OnIdiom True,Desktop=False}" Aspect="AspectFill">
+
+                </Image>
+                    <Label HorizontalOptions="Center"  Margin="2" 
                            LineBreakMode="WordWrap"
                            FontSize="Subtitle"
-                        Text="Welcome to WhenWhere, your go-to platform for all things events! Whether you're looking to create your own event or discover and sign up for exciting gatherings happening around you, we've got you covered.With WhenWhere, organizing your dream event has never been easier. Our user-friendly event creation tool allows you to effortlessly plan and tailor every detail to perfection. Whether it's a small get-together, a corporate conference, or a grand celebration, our intuitive interface ensures a seamless experience from start to finish."
-                    HorizontalOptions="Center" />
+                        Text="Welcome to WhenWhere, your go-to platform for all things events! Whether you're looking to create your own event or discover and sign up for exciting gatherings happening around you, we've got you covered.With WhenWhere, organizing your dream event has never been easier."
+                        />
+                
                 </VerticalStackLayout>
             </Frame>
+            
             <Grid Grid.Row="3" ColumnDefinitions="* ,*" VerticalOptions="Center">
                 <Button
                     Grid.Column="0"
@@ -34,18 +39,21 @@
                     Text="Sign In"
                     BackgroundColor="Blue"
                     TextColor="White"
-                    Clicked="Login_clicked"/>
+                    Clicked="Login_clicked"
+                    FontSize="Medium"/>
                 <Button
                     Margin="10"
                     Grid.Column="1"
                     Text="Sign Up"
                     BackgroundColor="blue"
                     TextColor="White"
-                    Clicked="SignUp_clicked"/>
+                    Clicked="SignUp_clicked"
+                    FontSize="Medium"/>
 
             </Grid>
         </Grid>
     </Frame>
         
 
+    </ScrollView>
 </ContentPage>

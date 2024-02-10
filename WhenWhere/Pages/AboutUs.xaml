@@ -4,26 +4,21 @@
              Title="AboutUs">
 
     <ScrollView>
-        <StackLayout Padding="50,0,50,0">
+        <VerticalStackLayout Padding="50,0,50,0">
 
             <ImageButton Style="{DynamicResource Logo}" Margin="30"></ImageButton>
 
             <VerticalStackLayout  >
                 <Label  Text="When Where" FontAttributes="Bold" FontSize="30" Margin="0,10,0,40" HorizontalOptions="Center"/>
-                    <Label LineBreakMode="WordWrap" Text="WhenWhere is a leading event management company that specializes in organizing and executing extraordinary events. With a team of experienced professionals, we take pride in delivering memorable and impactful experiences for our clients. From corporate gatherings to weddings and everything in between, we ensure attention to detail and a seamless event planning process. Trust WhenWhere to bring your vision to life and create unforgettable moments."
-                           FontSize="18" LineHeight="2.2"/>
+                    <Label HorizontalTextAlignment="Center" LineBreakMode="WordWrap" Text="WhenWhere is a leading event management company that specializes in organizing and executing extraordinary events. With a team of experienced professionals, we take pride in delivering memorable and impactful experiences for our clients. From corporate gatherings to weddings and everything in between, we ensure attention to detail and a seamless event planning process. Trust WhenWhere to bring your vision to life and create unforgettable moments."
+                           FontSize="15" LineHeight="2.2"/>
                 </VerticalStackLayout>
 
 
             <Label Grid.Row="1" Text="Our Colleagues" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,25,0,20" FontSize="25"></Label>
-            <Grid Margin="100,20">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+
+            <StackLayout Orientation="{OnIdiom Vertical,Desktop=Horizontal}" HorizontalOptions="Center" Spacing="50" Margin="100,20">
+
 
                 <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
@@ -36,7 +31,7 @@
                     <Label Grid.Row="2" Text="Backend Developer" HorizontalTextAlignment="Center" FontSize="14"></Label>
                 </Grid>
 
-                <Grid Grid.Column="1">
+                <Grid  Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="auto" />
@@ -79,8 +74,8 @@
                     <Label Grid.Row="1" Text="Ehsan Moslemi" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,25,0,10" FontSize="17"></Label>
                     <Label Grid.Row="2" Text="Backend Developer" HorizontalTextAlignment="Center" FontSize="14"></Label>
                 </Grid>
-            </Grid>
-        </StackLayout>
+            </StackLayout>
+        </VerticalStackLayout>
     </ScrollView>
 
 </ContentPage>
