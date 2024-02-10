@@ -42,7 +42,7 @@
 
 
         </VerticalStackLayout>
-            <Button Clicked="RegisterButton_Clicked" Grid.Row="1" Text="Register" FontSize="17" FontAttributes="Bold" TextColor="White" BackgroundColor="#1D4ED8" HorizontalOptions="FillAndExpand" />
+            <Button Clicked="RegisterButton_Clicked" Grid.Row="1" Text="Register" FontSize="17" FontAttributes="Bold" TextColor="White" BackgroundColor="#1D4ED8" HorizontalOptions="FillAndExpand"  />
         </Grid>
 
     </ScrollView>

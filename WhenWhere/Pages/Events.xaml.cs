@@ -23,14 +23,12 @@ public partial class Events : ContentPage
             if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
                 throw new Exception("It seems that your internet connection has been lost. Please check your connection and try again.");
             var events = await EventsService.GetAllEvents("event_list/");
+            AllEvents.Clear();
             if (events != null)
             {
                 foreach (var eventModel in events)
                 {
-                    if (!AllEvents.Contains(eventModel))
-                    {
                         AllEvents.Add(eventModel);
-                    }
                 }
             }
         }

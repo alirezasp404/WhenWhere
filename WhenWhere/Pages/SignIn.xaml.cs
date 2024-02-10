@@ -36,13 +36,16 @@ public partial class SignIn : ContentPage
             string json = JsonSerializer.Serialize(Login);
             StringContent content1 = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = await _client.PostAsync("http://127.0.0.1:8000/login", content1);
+            HttpResponseMessage response = await _client.PostAsync("http://localhost:8000/login", content1);
             if (response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 var Items = JsonSerializer.Deserialize<Login_res>(content);
-                Preferences.Set("UserID", Items?.id.ToString());
-                await Shell.Current.GoToAsync("//home");
+                if (Items.id > 0)
+                {
+                    Preferences.Set("UserID", Items?.id.ToString());
+                    await Shell.Current.GoToAsync("//home");
+                }
             }
             else
             {

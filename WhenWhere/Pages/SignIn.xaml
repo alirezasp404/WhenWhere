@@ -4,7 +4,7 @@
              x:Class="WhenWhere.Pages.SignIn"
              Title="SignIn">
 
-    <Frame Margin="10" BorderColor="Blue">
+    <Frame BackgroundColor="Black" Margin="10" BorderColor="Blue">
         <Grid Margin="20" Padding="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />

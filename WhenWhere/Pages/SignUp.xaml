@@ -4,7 +4,7 @@
              x:Class="WhenWhere.Pages.SignUp"
              Title="SignUp">
     
-    <Frame BorderColor="Blue" Margin="10">
+    <Frame BackgroundColor="Black" BorderColor="Blue" Margin="10">
         <VerticalStackLayout Margin="20" Padding="10">
             <Image
                 Source="logo.png"

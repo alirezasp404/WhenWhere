@@ -40,8 +40,8 @@ public partial class CreateEvent : ContentPage
                 throw new Exception("Please enter valid input");
             EventModel.capacity = capacity;
             await EventsService.CreateEvent(EventModel, userId);
-            await Shell.Current.GoToAsync("..");
             await DisplayAlert("Done", "Your event has been successfully created", "OK");
+            await Shell.Current.GoToAsync("..");
         }
         catch (Exception)
         {

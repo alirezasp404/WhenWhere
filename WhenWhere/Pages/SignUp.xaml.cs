@@ -31,32 +31,32 @@ public partial class SignUp : ContentPage
                 await DisplayAlert("Error", "All fields are required.", "OK");
 
             }
-
             else if (Register.password != confirmPassword)
             {
                 await DisplayAlert("Error", "Passwords do not match.", "OK");
-
             }
             else if (!ValidateEmail(Register.email))
             {
                 await DisplayAlert("Error", "format of email is not valid", "OK");
-
-            }
-
-            string json = JsonSerializer.Serialize(Register);
-            StringContent content1 = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await _client.PostAsync("http://127.0.0.1:8000/register", content1);
-            if (response.IsSuccessStatusCode)
-            {
-                await DisplayAlert("Done", "Your registration was successful. Please Sign In", "OK");
-
-                await Shell.Current.GoToAsync("SignIn");
-
             }
             else
             {
-                await DisplayAlert("Error", "email or password is wrong", "OK");
 
+                string json = JsonSerializer.Serialize(Register);
+                StringContent content1 = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await _client.PostAsync("http://localhost:8000/register", content1);
+                if (response.IsSuccessStatusCode)
+                {
+                    await DisplayAlert("Done", "Your registration was successful. Please Sign In", "OK");
+
+                    await Shell.Current.GoToAsync("SignIn");
+
+                }
+                else
+                {
+                    await DisplayAlert("Error", "email or password is wrong", "OK");
+
+                }
             }
         }
         catch (Exception)

@@ -35,11 +35,15 @@ public partial class CreatedEvents : ContentPage
                 }
             }
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             await DisplayAlert("Failed", "An error occurred while loading your created events", "OK");
         }
 
 
+    }
+    private async void CreateEventButton_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("CreateEvent");
     }
 }

@@ -30,7 +30,9 @@ public partial class EventDetails : ContentPage
             var isRegistered = await EventsService.RegisterEvent(eventModel?.id, Preferences.Get("UserId", null));
             if (isRegistered)
                 await DisplayAlert("Done", $"You Registered in \"{eventModel?.title}\"", "OK");
-
+            else
+                await DisplayAlert("Failed", "You have already registered for this event", "OK");
+            
         }
         catch (Exception)
         {

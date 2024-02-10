@@ -8,7 +8,7 @@
             <ImageButton Style="{DynamicResource Logo}"></ImageButton>
             <ScrollView>
                 <Grid RowSpacing="10" Padding="20" ColumnSpacing="10"  ColumnDefinitions="auto,*" RowDefinitions="auto,auto,auto,auto,auto,auto,auto">
-                    <Label Text="Topic" Style="{DynamicResource Labels}" Grid.Row="0" Grid.Column="0"></Label>
+                    <Label Text="Title" Style="{DynamicResource Labels}" Grid.Row="0" Grid.Column="0"></Label>
                     <Entry Grid.Row="0" Grid.Column="1"
                             Placeholder="Enter Event Title"  Text="{Binding EventModel.title}"></Entry>
 

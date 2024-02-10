@@ -10,12 +10,13 @@ namespace WhenWhere.Services
     public static class EventsService
     {
         private static readonly HttpClient _client = new HttpClient();
+        //public static string BaseAddress = DeviceInfo.Platform == DevicePlatform.Android ? "http://10.0.2.2:8000/" : "http://localhost:8000/";
         private static JsonSerializerOptions _serializerOptions;
         static EventsService()
         {
-            _client = new HttpClient()
+        _client = new HttpClient()
             {
-                BaseAddress = new Uri("http://127.0.0.1:8000/")
+                BaseAddress = new Uri("http://localhost:8000/")
             };
             _serializerOptions = new JsonSerializerOptions
             {
@@ -84,6 +85,7 @@ namespace WhenWhere.Services
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = await _client.PostAsync($"select_event/{userId}/", content);
+            
             return response.IsSuccessStatusCode;
 
         }
