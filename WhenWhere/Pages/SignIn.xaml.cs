@@ -1,20 +1,27 @@
 
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using WhenWhere.Models;
+using WhenWhere.ServiceContracts;
+using WhenWhere.Services;
 
 namespace WhenWhere.Pages;
 
 public partial class SignIn : ContentPage
 {
-    public Login_model Login { get; set; } = new Login_model();
-    public SignIn()
+    public LoginModel Login { get; set; } = new LoginModel();
+    private readonly IHttpClientBuilder _httpClientBuilder;
+
+    public SignIn(IHttpClientBuilder httpClient)
     {
         Shell.SetFlyoutBehavior(this, FlyoutBehavior.Disabled);
         Shell.SetTabBarIsVisible(this, false);
         InitializeComponent();
         BindingContext = Login;
+        _httpClientBuilder = httpClient;
     }
     private async void Login_clicked(object sender, EventArgs e)
     {
@@ -23,30 +30,21 @@ public partial class SignIn : ContentPage
         try
         {
 
-            if (string.IsNullOrWhiteSpace(Login.email) || string.IsNullOrWhiteSpace(Login.password))
+            if (string.IsNullOrWhiteSpace(Login.Email) || string.IsNullOrWhiteSpace(Login.Password))
             {
                 await DisplayAlert("Error", "All fields are required.", "OK");
             }
-            else if (!ValidateEmail(Login.email))
+            else if (!ValidateEmail(Login.Email))
             {
-                await DisplayAlert("Error", "format of email is not valid", "OK");
+                await DisplayAlert("Error", "Format of email is not valid", "OK");
 
             }
+            var result = await _httpClientBuilder.LoginAsync(Login);
 
-
-            string json = JsonSerializer.Serialize(Login);
-            StringContent content1 = new StringContent(json, Encoding.UTF8, "application/json");
-
-            HttpResponseMessage response = await _client.PostAsync("http://localhost:8000/login", content1);
-            if (response.IsSuccessStatusCode)
+            if (result)
             {
-                string content = await response.Content.ReadAsStringAsync();
-                var Items = JsonSerializer.Deserialize<Login_res>(content);
-                if (Items.id > 0)
-                {
-                    Preferences.Set("UserId", Items?.id.ToString());
-                    await Shell.Current.GoToAsync("//home");
-                }
+
+                await Shell.Current.GoToAsync("//home");
             }
             else
             {
@@ -56,11 +54,10 @@ public partial class SignIn : ContentPage
         catch (Exception)
         {
             await DisplayAlert("Error", "An error occurred during Sign In", "OK");
-
         }
 
-
     }
+
     public bool ValidateEmail(string email)
     {
         string emailPattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";

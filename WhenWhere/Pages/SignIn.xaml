@@ -25,12 +25,12 @@
                 />
 
             <Label Text="  Email" Grid.Row="1" HorizontalOptions="Start" Margin="5" />
-            <Entry Text="{Binding email}" Grid.Row="2" Margin="10" Background="White" TextColor="Black"/>
+            <Entry Text="{Binding Email}" Grid.Row="2" Margin="10" Background="White" TextColor="Black"/>
 
             <Label Text="  Password" Grid.Row="3" HorizontalOptions="Start" Margin="5"/>
-            <Entry Text="{Binding password}" Grid.Row="4" IsPassword="True" Margin="10" Background="white" TextColor="Black"/>
+            <Entry Text="{Binding Password}" Grid.Row="4" IsPassword="True" Margin="10" Background="white" TextColor="Black"/>
 
-            <Button Text="Sign In" Grid.Row="5" FontSize="22"  Background="blue" TextColor="White" Margin="0,30,0,0" Clicked="Login_clicked"/>
+            <Button Clicked="Login_clicked" Text="Sign In" Grid.Row="5" FontSize="22"  Background="blue" TextColor="White" Margin="0,30,0,0" />
             <HorizontalStackLayout Margin="0,20,0,0" HorizontalOptions="Center"  Grid.Row="6">
                 <Label Text="If you do not have an account" VerticalOptions="Center"   FontSize="13" ></Label>
                 <Button Text="sign up" Padding="5" TextColor="Blue" Clicked="SignUp_Clicked" Background="Black" BorderWidth="0"  FontSize="20"/>

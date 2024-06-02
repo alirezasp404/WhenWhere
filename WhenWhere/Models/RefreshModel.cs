@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace WhenWhere.Models
 {
-    public class Login_model
+    public class RefreshModel
     {
-
-        public string? email { get; set; }
-        public string? password {  get; set; }
+        public string? RefreshToken;
     }
 }

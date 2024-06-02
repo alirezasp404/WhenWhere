@@ -3,17 +3,21 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text.Json;
 using WhenWhere.Models;
+using WhenWhere.ServiceContracts;
 using WhenWhere.Services;
 
 namespace WhenWhere.Pages;
 
 public partial class Events : ContentPage
 {
+    private readonly IEventsService _eventsService;
+
     public ObservableCollection<EventModel> AllEvents { get; set; } = new ObservableCollection<EventModel>();
-    public Events()
+    public Events(IEventsService eventsService)
     {
         InitializeComponent();
         BindingContext = this;
+        this._eventsService = eventsService;
     }
     protected override async void OnAppearing()
     {
@@ -25,7 +29,7 @@ public partial class Events : ContentPage
                 await DisplayAlert("Failed", "It seems that your internet connection has been lost. Please check your connection and try again.", "OK");
                 throw new Exception();
             }
-            var events = await EventsService.GetAllEvents("event_list/");
+            var events = await _eventsService.GetAllEvents();
             AllEvents.Clear();
             if (events != null)
             {

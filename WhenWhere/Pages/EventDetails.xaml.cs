@@ -22,22 +22,22 @@ public partial class EventDetails : ContentPage
         InitializeComponent();
 
     }
-    private async void RegisterButton_Clicked(object sender, EventArgs e)
-    {
-        try
-        {
+    //private async void RegisterButton_Clicked(object sender, EventArgs e)
+    //{
+    //    try
+    //    {
 
-            var isRegistered = await EventsService.RegisterEvent(eventModel?.id, Preferences.Get("UserId", null));
-            if (isRegistered)
-                await DisplayAlert("Done", $"You Registered in \"{eventModel?.title}\"", "OK");
-            else
-                await DisplayAlert("Failed", "You have already registered for this event", "OK");
+    //        var isRegistered = await EventsService.RegisterEvent(eventModel?.Id, Preferences.Get("UserId", null));
+    //        if (isRegistered)
+    //            await DisplayAlert("Done", $"You Registered in \"{eventModel?.Title}\"", "OK");
+    //        else
+    //            await DisplayAlert("Failed", "You have already registered for this event", "OK");
             
-        }
-        catch (Exception)
-        {
-            await DisplayAlert("Failed", "An error occurred while registering for this event. Please try again", "OK");
-        }
-        await Shell.Current.GoToAsync("..");
-    }
+    //    }
+    //    catch (Exception)
+    //    {
+    //        await DisplayAlert("Failed", "An error occurred while registering for this event. Please try again", "OK");
+    //    }
+    //    await Shell.Current.GoToAsync("..");
+    //}
 }

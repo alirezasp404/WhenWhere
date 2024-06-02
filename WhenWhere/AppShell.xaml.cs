@@ -11,8 +11,13 @@ namespace WhenWhere
             Routing.RegisterRoute("SignIn", typeof(SignIn));
             Routing.RegisterRoute("SignUp", typeof(SignUp));
             Routing.RegisterRoute("event_details", typeof(EventDetails));
-            var userId = Preferences.Get("UserId", null);
-            if (userId != null)
+            CheckUserLoggedIn();
+        }
+
+        private async void CheckUserLoggedIn()
+        {
+            var isLoggedIn = await SecureStorage.Default.GetAsync("TokenType") is not null ;
+            if (isLoggedIn)
             {
                 landingflyout.IsVisible = false;
             }

@@ -31,7 +31,6 @@
                          HorizontalOptions="End"
                         Margin="10"
                         Padding="50,0,50,0"
-                        Clicked="SubmitButton_Clicked"
             ></Button >
                 </Grid>
             </ScrollView>
@@ -39,3 +38,5 @@
 
     </ScrollView>
 </ContentPage>
+<!--Clicked="SubmitButton_Clicked"-->
+    

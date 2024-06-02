@@ -14,29 +14,29 @@ public partial class RegisteredEvents : ContentPage
         InitializeComponent();
         BindingContext = this;
     }
-    protected override async void OnAppearing()
-    {
-        base.OnAppearing();
+    //protected override async void OnAppearing()
+    //{
+    //    base.OnAppearing();
 
-        try
-        {
-            if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
-            {
-                await DisplayAlert("Failed", "It seems that your internet connection has been lost. Please check your connection and try again.", "OK");
-                throw new Exception();
-            }
-            var events = await EventsService.GetAllRegisterdEvents($"select_event/{userId}/");
-            foreach (var eventModel in events)
-            {
-                if (!AllEvents.Contains(eventModel))
-                {
-                    AllEvents.Add(eventModel);
-                }
-            }
-        }
-        catch (Exception)
-        {
-            await DisplayAlert("Failed", "An error occurred while loading your registered events", "OK");
-        }
-    }
+    //    try
+    //    {
+    //        if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
+    //        {
+    //            await DisplayAlert("Failed", "It seems that your internet connection has been lost. Please check your connection and try again.", "OK");
+    //            throw new Exception();
+    //        }
+    //        var events = await EventsService.GetAllRegisterdEvents($"select_event/{userId}/");
+    //        foreach (var eventModel in events)
+    //        {
+    //            if (!AllEvents.Contains(eventModel))
+    //            {
+    //                AllEvents.Add(eventModel);
+    //            }
+    //        }
+    //    }
+    //    catch (Exception)
+    //    {
+    //        await DisplayAlert("Failed", "An error occurred while loading your registered events", "OK");
+    //    }
+    //}
 }

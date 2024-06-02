@@ -10,6 +10,7 @@
 
     <ShellContent  x:Name="landingflyout" Route="landing" FlyoutItemIsVisible="False"
         ContentTemplate="{DataTemplate pages:Landing}"/>
+
     <FlyoutItem  Title="home" Icon="home.png" Route="home">
         <ShellContent x:Name="flyoutevents"  Route="events" Icon="events.png" Title="Events"
         ContentTemplate="{DataTemplate pages:Events}"/>

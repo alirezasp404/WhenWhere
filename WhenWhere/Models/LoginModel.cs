@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WhenWhere.Models
 {
-    public class Login_res
+    public class LoginModel
     {
-        public int? id {  get; set; }
-        public string? email { get; set; }
+        public string? Email { get; set; }
+        public string? Password {  get; set; }
     }
 }

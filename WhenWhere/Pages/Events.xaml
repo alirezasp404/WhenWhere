@@ -14,14 +14,14 @@
                             <Grid RowSpacing="10" RowDefinitions="auto,auto" ColumnDefinitions="auto,*,auto"    >
                             <Image Grid.Row="0"  Grid.Column="0" Grid.RowSpan="2" Source="event_profile.png" WidthRequest="150"></Image>
                                 <VerticalStackLayout Spacing="5" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="1" >
-                                    <Label Text="{Binding title}" FontAttributes="Bold"  Style="{DynamicResource Labels}" />
+                                    <Label Text="{Binding Title}" FontAttributes="Bold"  Style="{DynamicResource Labels}" />
                                     <Grid ColumnDefinitions="auto,*" >
                                         <Image Grid.Column="0"  WidthRequest="20" Source="time.gif"></Image>
-                                        <Label Grid.Column="1" Text="{Binding expired_at}"  FontSize="12"  Style="{DynamicResource Labels}" />
+                                        <Label Grid.Column="1" Text="{Binding ExpiredAt}"  FontSize="12"  Style="{DynamicResource Labels}" />
                                     </Grid>
                                     <Grid ColumnDefinitions="auto,*">
                                         <Image Grid.Column="0" VerticalOptions="Start" Source="location.png" WidthRequest="20"></Image>
-                                        <Label Grid.Column="1" Text="{Binding location}"   FontSize="12"  Style="{DynamicResource Labels}" />
+                                        <Label Grid.Column="1" Text="{Binding Location}"   FontSize="12"  Style="{DynamicResource Labels}" />
                                     </Grid>
                                 </VerticalStackLayout>
                                 <Button Clicked="RegisterButton_Clicked" Grid.Row="1" Grid.Column="2" Style="{DynamicResource Buttons}" HeightRequest="50" Text="Register"></Button>

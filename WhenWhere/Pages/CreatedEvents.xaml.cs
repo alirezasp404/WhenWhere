@@ -7,13 +7,16 @@ namespace WhenWhere.Pages;
 public partial class CreatedEvents : ContentPage
 {
     private string? userId;
+    private readonly EventsService _eventsService;
+
     public ObservableCollection<EventModel> AllEvents { get; set; } = new ObservableCollection<EventModel>();
-    public CreatedEvents()
+    public CreatedEvents(EventsService eventsService)
     {
         userId = Preferences.Get("UserId", null);
 
         InitializeComponent();
         BindingContext = this;
+        this._eventsService = eventsService;
     }
     protected override async void OnAppearing()
     {
@@ -25,7 +28,7 @@ public partial class CreatedEvents : ContentPage
                 await DisplayAlert("Failed", "It seems that your internet connection has been lost. Please check your connection and try again.", "OK");
                 throw new Exception();
             }
-            var events = await EventsService.GetAllEvents($"create_event/{userId}/");
+            var events = await _eventsService.GetAllEvents();
             if (events != null)
             {
 

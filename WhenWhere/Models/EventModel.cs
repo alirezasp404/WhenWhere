@@ -3,19 +3,19 @@ namespace WhenWhere.Models
 {
     public class EventModel
     {
-        public int? id { get; set; }
+        public Guid? Id { get; set; }
 
-        public string? title { get; set; }
+        public string? Title { get; set; }
 
-        public string? description { get; set; }
+        public string? Description { get; set; }
 
-        public DateTime? expired_at { get; set; }
+        public DateTime? ExpiredAt { get; set; }
+        
+        public int? Capacity {  get; set; }
 
-        public int? capacity {  get; set; }
+        public string? Location {  get; set; }
 
-        public string? location {  get; set; }
-
-        public string? event_maker {  get; set; }
+        public string? EventCreator {  get; set; }
 
         public override bool Equals(object? obj)
         {
@@ -24,7 +24,7 @@ namespace WhenWhere.Models
                 return false;
             }
             var eventModel = (EventModel?)obj;
-            return id == eventModel?.id;
+            return Id == eventModel?.Id;
         }
     }
 }
