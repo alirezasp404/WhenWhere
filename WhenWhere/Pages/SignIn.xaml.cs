@@ -1,9 +1,7 @@
 
-using Newtonsoft.Json;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Text.Json;
+
 using System.Text.RegularExpressions;
+using WhenWhere.Exceptions;
 using WhenWhere.Models;
 using WhenWhere.ServiceContracts;
 using WhenWhere.Services;
@@ -12,16 +10,17 @@ namespace WhenWhere.Pages;
 
 public partial class SignIn : ContentPage
 {
-    public LoginModel Login { get; set; } = new LoginModel();
-    private readonly IHttpClientBuilder _httpClientBuilder;
+    private readonly IAuthenticationService _authenticationService;
 
-    public SignIn(IHttpClientBuilder httpClient)
+    public LoginModel Login { get; set; } = new LoginModel();
+
+    public SignIn(IAuthenticationService authenticationService)
     {
         Shell.SetFlyoutBehavior(this, FlyoutBehavior.Disabled);
         Shell.SetTabBarIsVisible(this, false);
         InitializeComponent();
         BindingContext = Login;
-        _httpClientBuilder = httpClient;
+        this._authenticationService = authenticationService;
     }
     private async void Login_clicked(object sender, EventArgs e)
     {
@@ -29,46 +28,37 @@ public partial class SignIn : ContentPage
 
         try
         {
-
             if (string.IsNullOrWhiteSpace(Login.Email) || string.IsNullOrWhiteSpace(Login.Password))
             {
-                await DisplayAlert("Error", "All fields are required.", "OK");
-            }
-            else if (!ValidateEmail(Login.Email))
-            {
-                await DisplayAlert("Error", "Format of email is not valid", "OK");
-
-            }
-            var result = await _httpClientBuilder.LoginAsync(Login);
-
-            if (result)
-            {
-
-                await Shell.Current.GoToAsync("//home");
+                throw new AuthenticationValidationException("All fields are required.");
             }
             else
             {
-                await DisplayAlert("Error", "email or password is wrong", "OK");
+                ValidateEmail(Login.Email);
+                await _authenticationService.LoginAsync(Login);
+                await Shell.Current.GoToAsync("//home");
             }
+        }
+        catch (AuthenticationValidationException ex)
+        {
+            await DisplayAlert("Error", ex.Message, "OK");
         }
         catch (Exception)
         {
             await DisplayAlert("Error", "An error occurred during Sign In", "OK");
         }
-
     }
 
-    public bool ValidateEmail(string email)
+    public void ValidateEmail(string email)
     {
         string emailPattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
 
 
         if (!Regex.IsMatch(email, emailPattern))
         {
-            return false;
-        }
+            throw new AuthenticationValidationException("Format of email is not valid");
 
-        return true;
+        }
     }
 
     private async void SignUp_Clicked(object sender, EventArgs e)

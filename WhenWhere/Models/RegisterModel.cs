@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WhenWhere.Models
 {
-    public class Register_model
+    public class RegisterModel
     {
         public string? first_name {  get; set; }
         public string? last_name {  get; set; }

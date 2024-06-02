@@ -1,21 +1,24 @@
-using System.Text;
-using System.Text.Json;
+
 using System.Text.RegularExpressions;
+using WhenWhere.Exceptions;
 using WhenWhere.Models;
+using WhenWhere.ServiceContracts;
 
 namespace WhenWhere.Pages;
 
 public partial class SignUp : ContentPage
 {
-    public Register_model Register { get; set; } = new Register_model();
+    private readonly IAuthenticationService _authenticationService;
 
-    public SignUp()
+    public RegisterModel Register { get; set; } = new RegisterModel();
+
+    public SignUp(IAuthenticationService authenticationService)
     {
         Shell.SetFlyoutBehavior(this, FlyoutBehavior.Disabled);
         Shell.SetTabBarIsVisible(this, false);
         InitializeComponent();
         BindingContext = Register;
-
+        this._authenticationService = authenticationService;
     }
     private async void SignUp_clicked(object sender, EventArgs e)
     {
@@ -28,36 +31,27 @@ public partial class SignUp : ContentPage
             if (string.IsNullOrWhiteSpace(Register.first_name) || string.IsNullOrWhiteSpace(Register.last_name) ||
                 string.IsNullOrWhiteSpace(Register.last_name) || string.IsNullOrWhiteSpace(Register.email) || string.IsNullOrWhiteSpace(confirmPassword))
             {
-                await DisplayAlert("Error", "All fields are required.", "OK");
-
+                throw new AuthenticationValidationException("All fields are required.");
             }
             else if (Register.password != confirmPassword)
             {
-                await DisplayAlert("Error", "Passwords do not match.", "OK");
-            }
-            else if (!ValidateEmail(Register.email))
-            {
-                await DisplayAlert("Error", "format of email is not valid", "OK");
+                throw new AuthenticationValidationException("Passwords do not match.");
             }
             else
             {
+                ValidateEmail(Register.email);
+                await _authenticationService.RegisterAsync(Register);
 
-                string json = JsonSerializer.Serialize(Register);
-                StringContent content1 = new StringContent(json, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await _client.PostAsync("http://localhost:8000/register", content1);
-                if (response.IsSuccessStatusCode)
-                {
-                    await DisplayAlert("Done", "Your registration was successful. Please Sign In", "OK");
+                await DisplayAlert("Done", "Your registration was successful. Please Sign In", "OK");
 
-                    await Shell.Current.GoToAsync("SignIn");
+                await Shell.Current.GoToAsync("SignIn");
 
-                }
-                else
-                {
-                    await DisplayAlert("Error", "email or password is wrong", "OK");
-
-                }
             }
+        }
+        catch (AuthenticationValidationException ex)
+        {
+            await DisplayAlert("Error", ex.Message, "OK");
+
         }
         catch (Exception)
         {
@@ -68,16 +62,15 @@ public partial class SignUp : ContentPage
 
 
     }
-    public bool ValidateEmail(string email)
+    public void ValidateEmail(string email)
     {
         string emailPattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
 
 
         if (!Regex.IsMatch(email, emailPattern))
         {
-            return false;
+            throw new AuthenticationValidationException("format of email is not valid.");
         }
 
-        return true;
     }
 }

@@ -5,8 +5,9 @@ namespace WhenWhere.ServiceContracts
 {
     public interface IHttpClientBuilder
     {
-        Task<bool> LoginAsync(LoginModel login);
 
         Task<HttpClient> GetHttpClientAsync();
+        Task SetTokensInStorage(LoginRes loginRes);
+        void ClearHttpClientData();
     }
 }

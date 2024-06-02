@@ -1,9 +1,12 @@
 ﻿using WhenWhere.Pages;
+using WhenWhere.ServiceContracts;
+using WhenWhere.Services;
 
 namespace WhenWhere
 {
     public partial class AppShell : Shell
     {
+
         public AppShell()
         {
             InitializeComponent();
@@ -16,7 +19,7 @@ namespace WhenWhere
 
         private async void CheckUserLoggedIn()
         {
-            var isLoggedIn = await SecureStorage.Default.GetAsync("TokenType") is not null ;
+            bool isLoggedIn = await SecureStorage.Default.GetAsync("TokenType") is not null;
             if (isLoggedIn)
             {
                 landingflyout.IsVisible = false;
@@ -25,10 +28,11 @@ namespace WhenWhere
 
         private async void MenuItem_Clicked(object sender, EventArgs e)
         {
-            Preferences.Clear();
             landingflyout.IsVisible = true;
-
+            var authenticationService = new AuthenticationService(new HttpClientBuilder());
+            await authenticationService.LogoutAsync();
             await Current.GoToAsync("//landing");
+
         }
     }
 }

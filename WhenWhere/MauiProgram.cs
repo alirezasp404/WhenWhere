@@ -11,10 +11,12 @@ namespace WhenWhere
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
-            builder.Services.AddSingleton<SignIn>();
             builder.Services.AddSingleton<IEventsService,EventsService>();
+            builder.Services.AddSingleton<IAuthenticationService,AuthenticationService>();
             builder.Services.AddSingleton<IHttpClientBuilder,HttpClientBuilder>();
             builder.Services.AddSingleton<Events>();
+            builder.Services.AddSingleton<SignIn>();
+            builder.Services.AddSingleton<SignUp>();
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
