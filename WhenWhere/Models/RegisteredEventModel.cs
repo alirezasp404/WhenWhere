@@ -11,6 +11,6 @@ namespace WhenWhere.Models
         public int id { get; set; }
         public string? event_picker { get; set; }
         public List<int>? events { get; set; }
-
+         
     }
 }

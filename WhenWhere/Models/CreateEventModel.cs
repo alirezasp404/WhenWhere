@@ -8,15 +8,15 @@ namespace WhenWhere.Models
 {
     public class CreateEventModel
     {
-        public string? title { get; set; }
+        public string? Title { get; set; }
 
-        public string? description { get; set; }
+        public string? Description { get; set; }
 
-        public DateTime? expired_at { get; set; }
+        public DateTime? ExpiredAt { get; set; }
 
-        public int? capacity { get; set; }
+        public int? Capacity { get; set; }
 
-        public string? location { get; set; }
+        public string? Location { get; set; }
 
     }
 }

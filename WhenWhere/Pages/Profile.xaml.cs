@@ -1,29 +1,35 @@
 using WhenWhere.Models;
+using WhenWhere.ServiceContracts;
 using WhenWhere.Services;
 
 namespace WhenWhere.Pages;
 
 public partial class Profile : ContentPage
 {
+    private readonly IUserInfoService _userInfoService;
+
     public ProfileModel? profileModel { get; set; }
-    public Profile()
+    public Profile(IUserInfoService userInfoService)
     {
 
+        this._userInfoService = userInfoService;
         InitializeComponent();
     }
-    //protected override async void OnAppearing()
-    //{
-    //    base.OnAppearing();
-    //    try
-    //    {
-    //        profileModel = await EventsService.GetProfileModel(Preferences.Get("UserId", null));
-    //    } catch (Exception)
-    //    {
-    //        await DisplayAlert("Failed", "An error occurred while loading your Profile", "OK");
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        try
+        {
+            profileModel = await _userInfoService.GetProfile();
+        }
+        catch (Exception)
+        {
+            await DisplayAlert("Failed", "An error occurred while loading your Profile", "OK");
 
-    //    }
-    //    BindingContext = profileModel;
-    //}
+        }
+        BindingContext = profileModel;
+
+    }
 
     private async void CreatedButton_Clicked(object sender, EventArgs e)
     {

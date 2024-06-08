@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
@@ -11,90 +12,67 @@ using WhenWhere.ServiceContracts;
 
 namespace WhenWhere.Services
 {
-    public class EventsService:IEventsService
+    public class EventsService : IEventsService
     {
         private readonly IHttpClientBuilder _httpClientBuilder;
-         public EventsService(IHttpClientBuilder httpClientBuilder)
+        public EventsService(IHttpClientBuilder httpClientBuilder)
         {
-            _httpClientBuilder=httpClientBuilder;
+            _httpClientBuilder = httpClientBuilder;
         }
-        //public static async Task CreateEvent(CreateEventModel createEvent, string? userId)
-        //{
-
-        //    string json = JsonSerializer.Serialize(createEvent, _serializerOptions);
-        //    StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
-        //    HttpResponseMessage response = await _client.PostAsync($"create_event/{userId}/", content);
-        //}
-        public  async Task<List<EventModel>?> GetAllEvents()
+        public async Task CreateEvent(CreateEventModel createEvent)
         {
+            string json = JsonConvert.SerializeObject(createEvent);
+            var client = await _httpClientBuilder.GetHttpClientAsync();
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await client.PostAsync($"api/events", content);
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception("unable to create new event");
+            }
+        }
+        private async Task<List<EventModel>?> GetEvents(string url)
+        {
+
             var eventModels = new List<EventModel>();
             var client = await _httpClientBuilder.GetHttpClientAsync();
-            HttpResponseMessage response = await client.GetAsync("api/events");
-            if (response.IsSuccessStatusCode)
+            HttpResponseMessage response = await client.GetAsync($"api/{url}");
+            if (!response.IsSuccessStatusCode)
             {
-                string content = await response.Content.ReadAsStringAsync();
-                eventModels = JsonConvert.DeserializeObject<List<EventModel>>(content);
+                throw new Exception("Get events failed.");
             }
+            string content = await response.Content.ReadAsStringAsync();
+            eventModels = JsonConvert.DeserializeObject<List<EventModel>>(content);
             return eventModels;
         }
+        public async Task<List<EventModel>?> GetAllEvents()
+        {
 
-        //public static async Task<List<EventModel>> GetAllRegisterdEvents(string url)
-        //{
-        //    List<EventModel>? RegisteredEvents = new List<EventModel>();
+            return await GetEvents("events");
+        }
+        public async Task<List<EventModel>?> GetCreatedEvents()
+        {
 
-        //    HttpResponseMessage response = await _client.GetAsync(url);
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        string content = await response.Content.ReadAsStringAsync();
-        //        var eventModels = JsonSerializer.Deserialize<List<RegisteredEventModel>>(content, _serializerOptions);
+            return await GetEvents("events/createdbyuser");
+        }
+        public async Task<List<EventModel>?> GetRegisteredEvents()
+        {
 
-        //        if (eventModels.Count <= 0)
-        //            return RegisteredEvents;
+            return await GetEvents("registerevents");
+        }
 
-        //        var allEvents = await GetAllEvents("event_list/");
-        //        if (allEvents.Count > 0 && eventModels.Count > 0)
-        //        {
-        //            foreach (int eventId in eventModels[0].events)
-        //            {
-        //                foreach (var item in allEvents)
-        //                {
-        //                    if (item.id == eventId)
-        //                    {
-        //                        RegisteredEvents.Add(item);
-        //                    }
-        //                }
-        //            }
-        //        }
+        public  async Task RegisterEvent(Guid? eventId)
+        {
+            var json=JsonConvert.SerializeObject(eventId);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            var client = await _httpClientBuilder.GetHttpClientAsync();
+            HttpResponseMessage response = await client.PostAsync("api/registerevents", content);
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception("unable to register the event");
+            }
 
-        //    }
+        }
 
-        //    return RegisteredEvents;
-        //}
-        //public static async Task<bool> RegisterEvent(Guid? eventId, string? userId)
-        //{
-        //    var registerEvent = new RegisterEventDetailsModel();
-        //    registerEvent.events.Add(eventId);
-        //    string json = JsonSerializer.Serialize(registerEvent, _serializerOptions);
-        //    StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
-        //    HttpResponseMessage response = await _client.PostAsync($"select_event/{userId}/", content);
-            
-        //    return response.IsSuccessStatusCode;
-
-        //}
-        //public static async Task<ProfileModel?> GetProfileModel(string? UserId)
-        //{
-        //    var profileModel = new ProfileModel();
-        //    HttpResponseMessage response = await _client.GetAsync($"login/{UserId}");
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        string content = await response.Content.ReadAsStringAsync();
-        //        profileModel = JsonSerializer.Deserialize<ProfileModel>(content, _serializerOptions);
-
-        //    }
-        //    return profileModel;
-
-        //}
     }
 }

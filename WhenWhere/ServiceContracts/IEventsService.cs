@@ -10,5 +10,9 @@ namespace WhenWhere.ServiceContracts
     public interface IEventsService
     {
         Task<List<EventModel>?> GetAllEvents();
+        Task<List<EventModel>?> GetCreatedEvents();
+        Task<List<EventModel>?> GetRegisteredEvents();
+        Task  RegisterEvent(Guid? eventId);
+        Task CreateEvent(CreateEventModel eventModel);
     }
 }

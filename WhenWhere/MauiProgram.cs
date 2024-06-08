@@ -14,7 +14,13 @@ namespace WhenWhere
             builder.Services.AddSingleton<IEventsService,EventsService>();
             builder.Services.AddSingleton<IAuthenticationService,AuthenticationService>();
             builder.Services.AddSingleton<IHttpClientBuilder,HttpClientBuilder>();
+            builder.Services.AddSingleton<IUserInfoService,UserInfoService>();
             builder.Services.AddSingleton<Events>();
+            builder.Services.AddSingleton<RegisteredEvents>();
+            builder.Services.AddSingleton<Profile>();
+            builder.Services.AddSingleton<CreateEvent>();
+            builder.Services.AddSingleton<CreatedEvents>();
+            builder.Services.AddSingleton<EventDetails>();
             builder.Services.AddSingleton<SignIn>();
             builder.Services.AddSingleton<SignUp>();
             builder

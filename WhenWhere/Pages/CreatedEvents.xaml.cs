@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using WhenWhere.Models;
+using WhenWhere.ServiceContracts;
 using WhenWhere.Services;
 
 namespace WhenWhere.Pages;
@@ -7,13 +8,11 @@ namespace WhenWhere.Pages;
 public partial class CreatedEvents : ContentPage
 {
     private string? userId;
-    private readonly EventsService _eventsService;
+    private readonly IEventsService _eventsService;
 
     public ObservableCollection<EventModel> AllEvents { get; set; } = new ObservableCollection<EventModel>();
-    public CreatedEvents(EventsService eventsService)
+    public CreatedEvents(IEventsService eventsService)
     {
-        userId = Preferences.Get("UserId", null);
-
         InitializeComponent();
         BindingContext = this;
         this._eventsService = eventsService;
@@ -28,10 +27,9 @@ public partial class CreatedEvents : ContentPage
                 await DisplayAlert("Failed", "It seems that your internet connection has been lost. Please check your connection and try again.", "OK");
                 throw new Exception();
             }
-            var events = await _eventsService.GetAllEvents();
+            var events = await _eventsService.GetCreatedEvents();
             if (events != null)
             {
-
                 foreach (var eventModel in events)
                 {
                     if (!AllEvents.Contains(eventModel))

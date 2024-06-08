@@ -7,21 +7,21 @@
         <Frame CornerRadius="8" Padding="20,10" BackgroundColor="#E7E7E7" Margin="20,10">
             <StackLayout Orientation="Horizontal">
                 <Label Text="First Name:" FontAttributes="Bold" Padding="0,0,10,0" TextColor="#707070" FontSize="17"/>
-                <Label Text="{Binding first_name}" TextColor="#707070" FontSize="17"/>
+                <Label Text="{Binding FirstName}" TextColor="#707070" FontSize="17"/>
             </StackLayout>
         </Frame>
 
         <Frame CornerRadius="8" Padding="20,10" BackgroundColor="#E7E7E7" Margin="20,10">
             <StackLayout Orientation="Horizontal">
                 <Label Text="Last Name:" FontAttributes="Bold" Padding="0,0,10,0" TextColor="#707070" FontSize="17"/>
-                <Label Text="{Binding last_name}" TextColor="#707070" FontSize="17"/>
+                <Label Text="{Binding LastName}" TextColor="#707070" FontSize="17"/>
             </StackLayout>
         </Frame>
 
         <Frame CornerRadius="8" Padding="20,10" BackgroundColor="#E7E7E7" Margin="20,10">
             <StackLayout Orientation="Horizontal" >
                 <Label Text="Email:" FontAttributes="Bold" Padding="0,0,10,0" TextColor="#707070" FontSize="17"/>
-                <Label Text="{Binding email}" TextColor="#707070" FontSize="17"/>
+                <Label Text="{Binding Email}" TextColor="#707070" FontSize="17"/>
             </StackLayout>
         </Frame>
 

@@ -1,4 +1,5 @@
 using WhenWhere.Models;
+using WhenWhere.ServiceContracts;
 using WhenWhere.Services;
 
 namespace WhenWhere.Pages;
@@ -8,6 +9,8 @@ public partial class EventDetails : ContentPage
 
 
     private EventModel? eventModel;
+    private readonly IEventsService _eventsService;
+
     public EventModel? EventModel
     {
         get => eventModel;
@@ -17,27 +20,26 @@ public partial class EventDetails : ContentPage
             BindingContext = eventModel;
         }
     }
-    public EventDetails()
+    public EventDetails(IEventsService eventsService)
     {
         InitializeComponent();
-
+        this._eventsService = eventsService;
     }
-    //private async void RegisterButton_Clicked(object sender, EventArgs e)
-    //{
-    //    try
-    //    {
+    private async void RegisterButton_Clicked(object sender, EventArgs e)
+    {
+        try
+        {
 
-    //        var isRegistered = await EventsService.RegisterEvent(eventModel?.Id, Preferences.Get("UserId", null));
-    //        if (isRegistered)
-    //            await DisplayAlert("Done", $"You Registered in \"{eventModel?.Title}\"", "OK");
-    //        else
-    //            await DisplayAlert("Failed", "You have already registered for this event", "OK");
-            
-    //    }
-    //    catch (Exception)
-    //    {
-    //        await DisplayAlert("Failed", "An error occurred while registering for this event. Please try again", "OK");
-    //    }
-    //    await Shell.Current.GoToAsync("..");
-    //}
+            await _eventsService.RegisterEvent(eventModel?.Id);
+            await DisplayAlert("Done", $"You Registered in \"{eventModel?.Title}\"", "OK");
+            //else
+            //    await DisplayAlert("Failed", "You have already registered for this event", "OK");
+
+        }
+        catch (Exception)
+        {
+            await DisplayAlert("Failed", "An error occurred while registering for this event. Please try again", "OK");
+        }
+        await Shell.Current.GoToAsync("..");
+    }
 }

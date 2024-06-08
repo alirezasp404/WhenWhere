@@ -5,7 +5,7 @@
              Title="Events" >
     <VerticalStackLayout Padding="5,0,5,5" >
         <ImageButton Style="{DynamicResource Logo}"></ImageButton>
-        <Button Margin="0,0,10,0" HorizontalOptions="End" Style="{DynamicResource Buttons}" Clicked="CreateEventButton_Clicked" Text="Create Event"  ></Button>
+        <Button Margin="0,0,10,10" HorizontalOptions="End" Style="{DynamicResource Buttons}" Clicked="CreateEventButton_Clicked" Text="Create Event"  ></Button>
         <CollectionView EmptyView="No Events to display" HeightRequest="600"
             ItemsSource="{Binding AllEvents}" ItemsUpdatingScrollMode="KeepItemsInView">
             <CollectionView.ItemTemplate>

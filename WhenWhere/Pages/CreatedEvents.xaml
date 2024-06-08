@@ -5,7 +5,7 @@
              Title="CreatedEvents">
     <VerticalStackLayout Padding="5,0,5,5" >
         <ImageButton Style="{DynamicResource Logo}"></ImageButton>
-        <Button Margin="0,0,10,0" HorizontalOptions="End" Style="{DynamicResource Buttons}" Clicked="CreateEventButton_Clicked" Text="Create Event"  ></Button>
+        <Button Margin="0,0,10,10" HorizontalOptions="End" Style="{DynamicResource Buttons}" Clicked="CreateEventButton_Clicked" Text="Create Event"  ></Button>
         <CollectionView EmptyView="No Events to display" HeightRequest="600"
             ItemsSource="{Binding AllEvents}" ItemsUpdatingScrollMode="KeepItemsInView">
             <CollectionView.ItemTemplate>
@@ -14,18 +14,18 @@
                         <Grid RowSpacing="10" RowDefinitions="auto,auto" ColumnDefinitions="auto,*,auto"    >
                             <Image Grid.Row="0"  Grid.Column="0" Grid.RowSpan="2" Source="event_profile.png" WidthRequest="150"></Image>
                             <VerticalStackLayout Spacing="5" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="1" >
-                                <Label Text="{Binding title}" FontAttributes="Bold"  Style="{DynamicResource Labels}" />
+                                <Label Text="{Binding Title}" FontAttributes="Bold"  Style="{DynamicResource Labels}" />
                                 <Grid ColumnSpacing="5" ColumnDefinitions="auto,*" RowDefinitions="auto,auto,auto">
                                     <Image Grid.Column="0" Grid.Row="0"  WidthRequest="20" Source="time.gif"></Image>
-                                    <Label Grid.Column="1" Grid.Row="0"  Text="{Binding expired_at}"  FontSize="12"  Style="{DynamicResource Labels}" />
+                                    <Label Grid.Column="1" Grid.Row="0"  Text="{Binding ExpiredAt}"  FontSize="12"  Style="{DynamicResource Labels}" />
 
                                     <Image Grid.Column="0" Grid.Row="1" VerticalOptions="Start"  Source="location.png" WidthRequest="20"></Image>
-                                    <Label Grid.Column="1" Grid.Row="1"  Text="{Binding location}"   FontSize="12"  Style="{DynamicResource Labels}" />
+                                    <Label Grid.Column="1" Grid.Row="1"  Text="{Binding Location}"   FontSize="12"  Style="{DynamicResource Labels}" />
 
                                     <Image Grid.Column="0" Grid.Row="2"  Source="capacity.png" WidthRequest="20"></Image>
-                                    <Label Grid.Column="1" Grid.Row="2"  Text="{Binding capacity}"   FontSize="12"  Style="{DynamicResource Labels}" />
+                                    <Label Grid.Column="1" Grid.Row="2"  Text="{Binding Capacity}"   FontSize="12"  Style="{DynamicResource Labels}" />
                                 </Grid>
-                                <Label Text="{Binding description}" LineBreakMode="WordWrap" FontSize="12"  Style="{DynamicResource Labels}" />
+                                <Label Text="{Binding Description}" LineBreakMode="WordWrap" FontSize="12"  Style="{DynamicResource Labels}" />
                             </VerticalStackLayout>
                         </Grid>
                     </Frame>

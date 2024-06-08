@@ -7,24 +7,24 @@
                             >
                     
             <Grid RowSpacing="20" ColumnDefinitions="auto,*,auto,*,auto,*,auto,*" RowDefinitions="auto,auto">
-                <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="7"  HorizontalOptions="Center" Text="{Binding title}" FontAttributes="Bold" FontSize="20" />
+                <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="7"  HorizontalOptions="Center" Text="{Binding Title}" FontAttributes="Bold" FontSize="20" />
                     <Image Grid.RowSpan="2" Grid.Row="0" Grid.Column="0" Source="event_profile.png" HeightRequest="300"/>
                 <Frame VerticalOptions="Start" Grid.Column="2" Grid.Row="1" BackgroundColor="#E7E7E7"  CornerRadius="10">
                     <VerticalStackLayout>
                         <Label HorizontalOptions="Center" Text="Capacity:" FontSize="17"  TextColor="#707070"  />
-                        <Label HorizontalOptions="Center" Text="{Binding capacity}" FontSize="17"  TextColor="#707070"  />
+                        <Label HorizontalOptions="Center" Text="{Binding Capacity}" FontSize="17"  TextColor="#707070"  />
                     </VerticalStackLayout>
                 </Frame>
                 <Frame VerticalOptions="Start" Grid.Column="4" Grid.Row="1" BackgroundColor="#E7E7E7"  CornerRadius="10">
                     <VerticalStackLayout>
                         <Label HorizontalOptions="Center" Text="When:" FontSize="17"  TextColor="#707070"  />
-                        <Label HorizontalOptions="Center" Text="{Binding expired_at}" FontSize="17"  TextColor="#707070"  />
+                        <Label HorizontalOptions="Center" Text="{Binding ExpiredAt}" FontSize="17"  TextColor="#707070"  />
                     </VerticalStackLayout>
                 </Frame>
                 <Frame VerticalOptions="Start" Grid.Column="6" Grid.Row="1" BackgroundColor="#E7E7E7"  CornerRadius="10">
                     <VerticalStackLayout>
                         <Label HorizontalOptions="Center" Text="Organizer:" FontSize="17"  TextColor="#707070"  />
-                        <Label HorizontalOptions="Center" Text="{Binding event_maker}" FontSize="17"  TextColor="#707070"  />
+                        <Label HorizontalOptions="Center" Text="{Binding EventCreator}" FontSize="17"  TextColor="#707070"  />
                     </VerticalStackLayout>
                 </Frame>
             </Grid>
@@ -33,22 +33,21 @@
             <StackLayout >
 
                 <Label  Text="Where:" FontSize="17" FontAttributes="Bold"/>
-                <Label Text="{Binding location}" FontSize="17" LineBreakMode="WordWrap"/>
+                <Label Text="{Binding Location}" FontSize="17" LineBreakMode="WordWrap"/>
 
             </StackLayout>
 
             <VerticalStackLayout>
 
                 <Label  Text="Description:" FontSize="17" FontAttributes="Bold" />
-                <Label  Text="{Binding description}" LineBreakMode="WordWrap"
+                <Label  Text="{Binding Description}" LineBreakMode="WordWrap"
                        FontSize="17" />
             </VerticalStackLayout>
 
 
         </VerticalStackLayout>
-            <Button Grid.Row="1" Text="Register" FontSize="17" FontAttributes="Bold" TextColor="White" BackgroundColor="#1D4ED8" HorizontalOptions="FillAndExpand"  />
+            <Button Clicked="RegisterButton_Clicked" Grid.Row="1" Text="Register" FontSize="17" FontAttributes="Bold" TextColor="White" BackgroundColor="#1D4ED8" HorizontalOptions="FillAndExpand"  />
         </Grid>
 
     </ScrollView>
 </ContentPage>
-<!--Clicked="RegisterButton_Clicked"-->
