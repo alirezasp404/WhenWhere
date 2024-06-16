@@ -12,7 +12,7 @@
                 <DataTemplate>
                     <Frame CornerRadius="20" BorderColor="{DynamicResource MainBackgroundColor}" Margin="10" Background="Transparent">
                         <Grid RowSpacing="10" RowDefinitions="auto,auto" ColumnDefinitions="auto,*,auto"    >
-                            <Image Grid.Row="0"  Grid.Column="0" Grid.RowSpan="2" Source="event_profile.png" WidthRequest="150"></Image>
+                            <Image Grid.Row="0"  Grid.Column="0" Grid.RowSpan="2" VerticalOptions="Start" Source="event_profile.png" WidthRequest="150"></Image>
                             <VerticalStackLayout Spacing="5" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="1" >
                                 <Label Text="{Binding Title}" FontAttributes="Bold"  Style="{DynamicResource Labels}" />
                                 <Grid ColumnSpacing="5" ColumnDefinitions="auto,*" RowDefinitions="auto,auto,auto">

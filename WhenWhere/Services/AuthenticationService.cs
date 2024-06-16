@@ -38,8 +38,13 @@ namespace WhenWhere.Services
         {
 
             var client = await _httpClientBuilder.GetHttpClientAsync();
-
-            string json = JsonConvert.SerializeObject(register);
+            //temporary register until saving all user data
+            var tempRegister = new LoginModel()
+            {
+                Email = register.Email,
+                Password = register.Password,
+            };
+            string json = JsonConvert.SerializeObject(tempRegister);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = await client.PostAsync("register", content);
             if (!response.IsSuccessStatusCode) {

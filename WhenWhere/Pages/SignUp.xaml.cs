@@ -28,18 +28,18 @@ public partial class SignUp : ContentPage
         try
         {
 
-            if (string.IsNullOrWhiteSpace(Register.first_name) || string.IsNullOrWhiteSpace(Register.last_name) ||
-                string.IsNullOrWhiteSpace(Register.last_name) || string.IsNullOrWhiteSpace(Register.email) || string.IsNullOrWhiteSpace(confirmPassword))
+            if (string.IsNullOrWhiteSpace(Register.FirstName) || string.IsNullOrWhiteSpace(Register.LastName) ||
+                string.IsNullOrWhiteSpace(Register.LastName) || string.IsNullOrWhiteSpace(Register.Email) || string.IsNullOrWhiteSpace(confirmPassword))
             {
                 throw new AuthenticationValidationException("All fields are required.");
             }
-            else if (Register.password != confirmPassword)
+            else if (Register.Password != confirmPassword)
             {
                 throw new AuthenticationValidationException("Passwords do not match.");
             }
             else
             {
-                ValidateEmail(Register.email);
+                ValidateEmail(Register.Email);
                 await _authenticationService.RegisterAsync(Register);
 
                 await DisplayAlert("Done", "Your registration was successful. Please Sign In", "OK");

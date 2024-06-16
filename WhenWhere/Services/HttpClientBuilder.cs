@@ -1,12 +1,7 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Headers;
 using System.Security.Authentication;
 using System.Text;
-using System.Threading.Tasks;
 using WhenWhere.Models;
 using WhenWhere.ServiceContracts;
 
@@ -20,7 +15,7 @@ namespace WhenWhere.Services
         public HttpClientBuilder()
         {
             _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("https://localhost:7152");
+            _httpClient.BaseAddress = new Uri("http://192.168.100.24:5138");
         }
 
         private async Task InitializeTokensFromStorage()

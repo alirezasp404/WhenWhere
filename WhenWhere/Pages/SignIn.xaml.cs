@@ -43,7 +43,7 @@ public partial class SignIn : ContentPage
         {
             await DisplayAlert("Error", ex.Message, "OK");
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             await DisplayAlert("Error", "An error occurred during Sign In", "OK");
         }

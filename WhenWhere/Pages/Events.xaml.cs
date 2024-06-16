@@ -31,7 +31,7 @@ public partial class Events : ContentPage
             }
             var events = await _eventsService.GetAllEvents();
             AllEvents?.Clear();
-            if (events != null)
+            if (events is not null)
             {
                 foreach (var eventModel in events)
                 {

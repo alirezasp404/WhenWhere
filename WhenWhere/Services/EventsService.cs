@@ -71,7 +71,6 @@ namespace WhenWhere.Services
             {
                 throw new Exception("unable to register the event");
             }
-
         }
 
     }

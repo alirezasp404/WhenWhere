@@ -15,16 +15,16 @@
                 />
 
             <Label Text="  First Name"  HorizontalOptions="Start" Margin="3" />
-            <Entry Text="{Binding first_name}"  Margin="10" Background="White" TextColor="Black"/>
+            <Entry Text="{Binding FirstName}"  Margin="10" Background="White" TextColor="Black"/>
 
             <Label Text="  Last Name"  HorizontalOptions="Start" Margin="3" />
-            <Entry Text="{Binding last_name}"  Margin="10" Background="White" TextColor="Black"/>
+            <Entry Text="{Binding LastName}"  Margin="10" Background="White" TextColor="Black"/>
 
             <Label Text="  Email"  HorizontalOptions="Start" Margin="3" />
-            <Entry Text="{Binding email}" Margin="10" Background="White" TextColor="Black"/>
+            <Entry Text="{Binding Email}" Margin="10" Background="White" TextColor="Black"/>
 
             <Label Text="  Password" HorizontalOptions="Start" Margin="3" />
-            <Entry Text="{Binding password}"  Margin="10" Background="White" TextColor="Black" IsPassword="True"/>
+            <Entry Text="{Binding Password}"  Margin="10" Background="White" TextColor="Black" IsPassword="True"/>
 
             <Label Text="  Confirm password"  HorizontalOptions="Start" Margin="3" />
             <Entry x:Name="confirm_password_entry" Grid.Row="9" Margin="10" Background="White"  IsPassword="True" TextColor="Black"/>

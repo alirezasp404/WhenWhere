@@ -28,16 +28,13 @@ public partial class CreatedEvents : ContentPage
                 throw new Exception();
             }
             var events = await _eventsService.GetCreatedEvents();
-            if (events != null)
+            AllEvents?.Clear();
+
+            foreach (var eventModel in events)
             {
-                foreach (var eventModel in events)
-                {
-                    if (!AllEvents.Contains(eventModel))
-                    {
-                        AllEvents.Add(eventModel);
-                    }
-                }
+                AllEvents?.Add(eventModel);
             }
+
         }
         catch (Exception)
         {

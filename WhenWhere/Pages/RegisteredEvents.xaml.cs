@@ -29,12 +29,10 @@ public partial class RegisteredEvents : ContentPage
                 throw new Exception();
             }
             var events = await _eventsService.GetRegisteredEvents();
+            AllEvents?.Clear();
             foreach (var eventModel in events)
             {
-                if (!AllEvents.Contains(eventModel))
-                {
-                    AllEvents.Add(eventModel);
-                }
+                AllEvents?.Add(eventModel);
             }
         }
         catch (Exception)

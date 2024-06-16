@@ -9,7 +9,7 @@ using WhenWhere.ServiceContracts;
 
 namespace WhenWhere.Services
 {
-    internal class UserInfoService : IUserInfoService
+    public class UserInfoService : IUserInfoService
     {
         private readonly IHttpClientBuilder _httpClientBuilder;
 
