@@ -31,6 +31,16 @@ namespace WhenWhere.Services
                 throw new Exception("unable to create new event");
             }
         }
+        public async Task DeleteEvent(Guid? eventId)
+        {
+            
+            var client = await _httpClientBuilder.GetHttpClientAsync();
+            HttpResponseMessage response = await client.DeleteAsync($"api/events/{eventId}");
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception("unable to delete selected event");
+            }
+        }
         private async Task<List<EventModel>?> GetEvents(string url)
         {
 

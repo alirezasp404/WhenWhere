@@ -5,7 +5,7 @@
              Title="RegisteredEvents">
     <VerticalStackLayout Padding="5,0,5,5" >
         <ImageButton  Style="{DynamicResource Logo}"></ImageButton>
-        <CollectionView Margin="0,45,0,0" EmptyView="No Events to display" HeightRequest="600"
+        <CollectionView Margin="5,45,5,5" EmptyView="No Events to display" HeightRequest="600"
             ItemsSource="{Binding AllEvents}" ItemsUpdatingScrollMode="KeepItemsInView">
             <CollectionView.ItemTemplate>
                 <DataTemplate>

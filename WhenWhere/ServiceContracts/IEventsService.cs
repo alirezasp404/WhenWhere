@@ -14,5 +14,7 @@ namespace WhenWhere.ServiceContracts
         Task<List<EventModel>?> GetRegisteredEvents();
         Task  RegisterEvent(Guid? eventId);
         Task CreateEvent(CreateEventModel eventModel);
+
+        Task DeleteEvent(Guid? eventId);
     }
 }

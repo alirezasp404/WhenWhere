@@ -15,7 +15,7 @@ namespace WhenWhere.Services
         public HttpClientBuilder()
         {
             _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("http://192.168.100.24:5138");
+            _httpClient.BaseAddress = new Uri("http://192.168.100.10:5138");
         }
 
         private async Task InitializeTokensFromStorage()

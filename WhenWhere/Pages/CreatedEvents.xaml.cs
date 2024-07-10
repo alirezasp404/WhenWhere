@@ -47,4 +47,18 @@ public partial class CreatedEvents : ContentPage
     {
         await Shell.Current.GoToAsync("CreateEvent");
     }
+    private async void DeleteButton_Clicked(object sender, EventArgs e)
+    {
+        var eventModel = (EventModel)((Button)sender).BindingContext;
+        try
+        {
+            await _eventsService.DeleteEvent(eventModel.Id);
+            await DisplayAlert("Done", $"{eventModel.Title} has been successfully deleted", "OK");
+        }
+        catch (Exception)
+        {
+          await  DisplayAlert("Error", "An error occurred during deleting the event", "OK");
+        }
+        OnAppearing();
+    }
 }
